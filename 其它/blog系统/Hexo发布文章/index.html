@@ -1,0 +1,811 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.useso.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo,Blog," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="创建新文章新文章创建非常简单，是需要输入下面的命令或者直接在 source/_posts 目录下创建.md文件即可。    hexo new &amp;quot;文章标题&amp;quot; 这个命令会自动在source/_posts下生成一个文章标题.md的文件。用文本编辑器打开这个文章可以看到，以下代码。文件的开头是属性，采用统一的yaml格式，用三条短横线分隔。下面是文章正文。新建、删除或修改文章后，不需要">
+<meta name="keywords" content="Hexo,Blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo发布文章（三）">
+<meta property="og:url" content="http://yoursite.com/其它/blog系统/Hexo发布文章/index.html">
+<meta property="og:site_name" content="谭小凯学习笔记">
+<meta property="og:description" content="创建新文章新文章创建非常简单，是需要输入下面的命令或者直接在 source/_posts 目录下创建.md文件即可。    hexo new &amp;quot;文章标题&amp;quot; 这个命令会自动在source/_posts下生成一个文章标题.md的文件。用文本编辑器打开这个文章可以看到，以下代码。文件的开头是属性，采用统一的yaml格式，用三条短横线分隔。下面是文章正文。新建、删除或修改文章后，不需要">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-15T06:08:09.554Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo发布文章（三）">
+<meta name="twitter:description" content="创建新文章新文章创建非常简单，是需要输入下面的命令或者直接在 source/_posts 目录下创建.md文件即可。    hexo new &amp;quot;文章标题&amp;quot; 这个命令会自动在source/_posts下生成一个文章标题.md的文件。用文本编辑器打开这个文章可以看到，以下代码。文件的开头是属性，采用统一的yaml格式，用三条短横线分隔。下面是文章正文。新建、删除或修改文章后，不需要">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/其它/blog系统/Hexo发布文章/"/>
+
+
+
+
+
+  <title> Hexo发布文章（三） | 谭小凯学习笔记 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">谭小凯学习笔记</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">人生如茶,静心以对。时光如水,沉淀方澈</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/其它/blog系统/Hexo发布文章/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="谭小凯">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="谭小凯学习笔记">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="谭小凯学习笔记" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hexo发布文章（三）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-16T15:49:16+08:00">
+                2016-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/其它/" itemprop="url" rel="index">
+                    <span itemprop="name">其它</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/其它/blog系统/" itemprop="url" rel="index">
+                    <span itemprop="name">blog系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h3><p>新文章创建非常简单，是需要输入下面的命令或者直接在 source/_posts 目录下创建.md文件即可。  </p>
+<pre><code> hexo new &quot;文章标题&quot;
+</code></pre><p>这个命令会自动在source/_posts下生成一个文章标题.md的文件。用文本编辑器打开这个文章可以看到，以下代码。文件的开头是属性，采用统一的yaml格式，用三条短横线分隔。下面是文章正文。新建、删除或修改文章后，不需要重启hexo server，刷新一下即可预览。</p>
+<pre><code>
+---
+title: 文章标题                   //文章标题
+date: 2016-12-16 10:46:21        //写文章日期
+tags:                            //Tag标签，这里是同时使用多个标签的写法
+ - Tag1
+ - Tag2 
+categories:                      //文章分类，这里用多级分类的写法
+ - 一级分类
+ - 二级分类
+ - 三级分类
+
+---
+文章正文
+
+</code></pre><a id="more"></a>
+<h5 id="文章可以拥有如下属性"><a href="#文章可以拥有如下属性" class="headerlink" title="文章可以拥有如下属性"></a>文章可以拥有如下属性</h5><table>
+<thead>
+<tr>
+<th>属性名</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:right">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>layout</td>
+<td style="text-align:center">Layout</td>
+<td style="text-align:right">post或page</td>
+</tr>
+<tr>
+<td>title</td>
+<td style="text-align:center">文章的标题</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>date</td>
+<td style="text-align:center">创建日期</td>
+<td style="text-align:right">文件的创建日期</td>
+</tr>
+<tr>
+<td>updated</td>
+<td style="text-align:center">修改日期</td>
+<td style="text-align:right">文件的修改日期</td>
+</tr>
+<tr>
+<td>comments</td>
+<td style="text-align:center">是否开启评论</td>
+<td style="text-align:right">true</td>
+</tr>
+<tr>
+<td>tags</td>
+<td style="text-align:center">标签</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>categories</td>
+<td style="text-align:center">分类</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>permalink</td>
+<td style="text-align:center">url中的名字</td>
+<td style="text-align:right">文件名</td>
+</tr>
+</tbody>
+</table>
+<h3 id="写文章内容"><a href="#写文章内容" class="headerlink" title="写文章内容"></a>写文章内容</h3><p>Hexo是使用Markdown编辑文章的，这个语言非常简洁书写起来不会像HTML那样有一大堆标签代码。虽然Markdown语言能兼容Html，但是还是极力推荐使用Markdown语言编写。</p>
+<ol>
+<li><p>Markdown语言</p>
+<p> Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯和亚伦·斯沃茨。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML文档”。 ——维基百科<br> 他有一些具体的语法，这里我就不多说了，可以直接查看Markdown语法［<a href="http://www.appinn.com/markdown/#p]" target="_blank" rel="noopener">http://www.appinn.com/markdown/#p]</a></p>
+</li>
+<li><p>Markdown编辑工具</p>
+<p> 我使用的Mac OS X，如果你也是我强烈建议你用 Mou 这款免费且十分好用的 Markdown 编辑器，它支持实时预览，既左边是你编辑 Markdown 语言，右边会实时的生成预览效果。不仅如此，Mou 还有一些有趣的偏好设置（Preference），例如主题（Themes）与样式（CSS），它们可以配置出定制化的文本编辑效果与导出效果，如果你对自带的主题与样式不满意还可以到 GitHub 上搜索其它爱好者为 Mou 编写的更多主题样式，导入的方式可以在偏好设置的 Themes 或 CSS 选项中 选择 reload。</p>
+<p> Mou下载地址 [<a href="http://25.io/mou/]" target="_blank" rel="noopener">http://25.io/mou/]</a></p>
+<p> Windows，有两款还算不错，一款叫做 MarkdownPad ，另一款叫做 MarkPad。</p>
+<p> 需要特别说明一下，这个编辑器如果要强制换行使用 Control + Return插入换行符。下面有很多快捷方式，也许你不记得Markdown的一些标示，可以使用这些快捷件帮助你。</p>
+<p> Mou常用操作快捷键</p>
+<pre><code> Copy HTML: Option + Cmd + C
+ 重点显示选中文本 Strong: Select text, Cmd + B
+ 将选中文本斜体显示 Emphasize:Select text, Cmd + I
+ Inline Code: Select text, Cmd + K
+ 加删除线 Strikethrough: Select text, Cmd + U
+ 插入超链接 Link: Select text, Control + Shift + L
+ 插入图像 Image: Select text, Control + Shift + I
+ 选中当前单词 Select Word: Control + Option + W
+ 选中当前行 Select Line: Shift + Cmd + L
+ 选中所有 Select All: Cmd + A
+ 取消选中所有 Deselect All: Cmd + D
+ 将选中文本 转化为大写字母 Convert to Uppercase: Select text, Control + U
+ 将选中文本 转化为小写字母 Convert to Lowercase: Select text, Control + Shift + U
+ 将选中文本所有单词的首字母转为大写Convert to Titlecase: Select text, Control + Option + U
+ 将选中文本插入编号 Convert to List: Select lines, Control + L
+ 将选中文本转换成引用块 Convert to Blockquote: Select lines, Control + Q
+ 将光标所在行转化为1级标题 Convert to H1: Cmd + 1
+ 将光标所在行转化为2级标题 Convert to H2: Cmd + 2
+ 将光标所在行转化为3级标题 Convert to H3: Cmd + 3
+ 将当前行转化为4级标题 Convert to H4: Cmd + 4
+ 将当前行转化为5级标题 Convert to H5: Cmd + 5
+ 将当前行转化为6级标题 Convert to H6: Cmd + 6
+ Convert Spaces to Tabs: Control + [
+ Convert Tabs to Spaces: Control + ]
+ 插入当前日期 Insert Current Date: Control + Shift + 1
+ 插入当前时间 Insert Current Time: Control + Shift + 2
+ 插入&lt;符号 Insert entity &lt;: Control + Shift + ,
+ 插入&gt;符号 Insert entity &gt;: Control + Shift + .
+ 插入$符号 Insert entity &amp;: Control + Shift + 7
+ Insert entity Space: Control + Shift + Space
+ Insert Scriptogr.am Header: Control + Shift + G
+ 左缩进 Shift Line Left: Select lines, Cmd + [
+ 右缩进 Shift Line Right: Select lines, Cmd + ]
+ 插入下一行 New Line: Cmd + Return
+ 添加注释 Comment: Cmd + /
+ 插入换行符 Hard Linebreak: Control + Return
+</code></pre></li>
+</ol>
+<h3 id="插入本地图片"><a href="#插入本地图片" class="headerlink" title="插入本地图片"></a>插入本地图片</h3><p>使用markdown写文章，插入图片的格式为</p>
+<pre><code>![图片名称](链接地址)
+</code></pre><p>使用本地路径的方法：</p>
+<pre><code>在hexo/source目录下新建一个img文件夹，将图片放入该文件夹下，插入图片时链接即为
+![图片名称](/img/图片名称)
+</code></pre><h3 id="使用站内连接"><a href="#使用站内连接" class="headerlink" title="使用站内连接"></a>使用站内连接</h3><p>使用站内文章连接</p>
+<pre><code>{% post_link 文章文件名（不要后缀） 文章标题（可选） %}
+</code></pre><h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><ol>
+<li><a href="http://wowubuntu.com/markdown/" target="_blank" rel="noopener">Markdown 语法说明</a></li>
+<li><a href="http://www.jianshu.com/p/1e402922ee32/" target="_blank" rel="noopener">Markdown——入门指南</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          
+            <a href="/tags/Blog/" rel="tag"># Blog</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/其它/blog系统/Hexo主题下载及配置/" rel="next" title="Hexo主题下载及配置（二）">
+                <i class="fa fa-chevron-left"></i> Hexo主题下载及配置（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/开发/NodeJs/Node-Js安装说明/" rel="prev" title="Node Js安装说明">
+                Node Js安装说明 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="谭小凯" />
+          <p class="site-author-name" itemprop="name">谭小凯</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建新文章"><span class="nav-number">1.</span> <span class="nav-text">创建新文章</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#文章可以拥有如下属性"><span class="nav-number">1.0.1.</span> <span class="nav-text">文章可以拥有如下属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写文章内容"><span class="nav-number">2.</span> <span class="nav-text">写文章内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入本地图片"><span class="nav-number">3.</span> <span class="nav-text">插入本地图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用站内连接"><span class="nav-number">4.</span> <span class="nav-text">使用站内连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章"><span class="nav-number">5.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">谭小凯</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
