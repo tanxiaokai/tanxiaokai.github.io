@@ -738,11 +738,17 @@ git config --global user.email &quot;email@gmail.com&quot;
 <li>监控外部调用执行的工作。</li>
 </ol>
 <h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><h4 id="1-下载"><a href="#1-下载" class="headerlink" title="1.下载"></a>1.下载</h4><p>从官网下载jenkins的war包，地址<a href="https://jenkins.io/" target="_blank" rel="noopener">https://jenkins.io/</a></p>
-<pre><code>sfsf
-</code></pre><h4 id="2-启动"><a href="#2-启动" class="headerlink" title="2.启动"></a>2.启动</h4><pre><code>java -jar jenkins2.9.3.war -Dfile.encoding=utf-8 --httpPort=8888 &amp;
+<pre><code>wget https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/2.89.4/jenkins.war
+</code></pre><h4 id="2-启动"><a href="#2-启动" class="headerlink" title="2.启动"></a>2.启动</h4><pre><code>java -jar jenkins.war -Dfile.encoding=utf-8 --httpPort=8888 &amp;
+</code></pre><h4 id="3-首次访问"><a href="#3-首次访问" class="headerlink" title="3.首次访问"></a>3.首次访问</h4><pre><code>#查看初始化密码
+cat /root/.jenkins/secrets/initialAdminPassword
 
-</code></pre><p>启动过程中会出现初始密码，请记录。如图：</p>
+#访问地址，输入密码登录, 
+http://127.0.0.1:8888
 
+#期间可以选择需要的插件，也可以直接使用推荐的常用插件
+
+</code></pre>
           
         
       
