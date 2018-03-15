@@ -491,6 +491,284 @@ supervisorctl reload
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Git/GitLab安装笔记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="谭小凯">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="谭小凯学习笔记">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="谭小凯学习笔记" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/开发/Git/GitLab安装笔记/" itemprop="url">
+                  GitLab安装维护笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-13T19:01:48+08:00">
+                2018-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发/" itemprop="url" rel="index">
+                    <span itemprop="name">开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    GitLab 是一个用于仓库管理系统的开源项目。使用<a href="http://baike.baidu.com/view/1531489.htm" target="_blank" rel="noopener">Git</a>作为代码管理工具，并在此基础上搭建起来的web服务。可通过Web界面进行访问公开的或者私人项目。它拥有与Github类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序(Wall)进行交流。它还提供一个代码片段收集功能可以轻松实现代码复用。</p>
+<h2 id="一、参考文档"><a href="#一、参考文档" class="headerlink" title="一、参考文档"></a>一、参考文档</h2><ul>
+<li><a href="https://www.gitlab.com.cn/installation/#centos-7" target="_blank" rel="noopener">https://www.gitlab.com.cn/installation/#centos-7</a></li>
+<li><a href="https://www.cnblogs.com/straycats/p/7637373.html" target="_blank" rel="noopener">https://www.cnblogs.com/straycats/p/7637373.html</a></li>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/</a></li>
+<li><a href="http://blog.csdn.net/wujiangwei567/article/details/53690646" target="_blank" rel="noopener">http://blog.csdn.net/wujiangwei567/article/details/53690646</a></li>
+</ul>
+<h2 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h2><ul>
+<li><p>前期准备</p>
+<pre><code>#使用国内镜像：
+#新建 vi /etc/yum.repos.d/gitlab-ce.repo，内容为：
+
+[gitlab-ce]  
+name=gitlab-ce  
+baseurl=http://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7  
+repo_gpgcheck=0  
+gpgcheck=0  
+enabled=1  
+gpgkey=https://packages.gitlab.com/gpg.key  
+
+sudo yum makecache
+</code></pre></li>
+<li><p>安装</p>
+<pre><code>#安装ssh服务，设置防火墙
+sudo yum install -y curl policycoreutils-python openssh-server
+sudo systemctl enable sshd
+sudo systemctl start sshd
+sudo firewall-cmd --permanent --add-service=http
+sudo systemctl reload firewalld
+
+#邮件服务
+sudo yum install postfix -y
+sudo systemctl enable postfix
+sudo systemctl start postfix
+
+#安装gitlab
+curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
+sudo yum install gitlab-ce -y 
+</code></pre></li>
+<li><p>汉化</p>
+<pre><code>mkdir /opt/tmp
+cd /opt/tmp
+
+#下载最新的汉化包
+#git clone https://gitlab.com/xhang/gitlab.git
+#指定版本下载,如下载10.5.4，可以运行下面的语句
+git clone https://gitlab.com/xhang/gitlab.git -b v10.5.4-zh
+
+#查看该汉化补丁的版本
+cat gitlab/VERSION
+
+#比较汉化标签和原标签，导出 patch 用的 diff 文件
+cd /opt/tmp/gitlab/
+git diff v10.5.4 v10.5.4-zh &gt; ../10.5.4-zh.diff
+
+#将补丁更新到gitlab中
+cd /opt/tmp
+yum install patch -y 
+patch -d /opt/gitlab/embedded/service/gitlab-rails -p1 &lt; 10.5.4-zh.diff
+
+cd /opt
+rm -rf /opt/tmp
+</code></pre></li>
+</ul>
+<h2 id="三、配置"><a href="#三、配置" class="headerlink" title="三、配置"></a>三、配置</h2><ul>
+<li><p>配置gitlab</p>
+<pre><code>vi /etc/gitlab/gitlab.rb
+
+修改:
+external_url &#39;http://120.77.2.93:7000&#39;
+
+unicorn[&#39;listen&#39;] = &#39;127.0.0.1&#39;
+unicorn[&#39;port&#39;] = 3000
+
+#主目录
+git_data_dirs({
+   &quot;default&quot; =&gt; {
+     &quot;path&quot; =&gt; &quot;/home/git/gitlab-repositories&quot;
+    }
+ })
+
+#邮件服务器设置 
+gitlab_rails[&#39;smtp_enable&#39;] = true
+gitlab_rails[&#39;smtp_address&#39;] = &quot;smtp.exmail.qq.com&quot;
+gitlab_rails[&#39;smtp_port&#39;] = 465
+gitlab_rails[&#39;smtp_user_name&#39;] = &quot;dev@1ycloud.net&quot;
+gitlab_rails[&#39;smtp_password&#39;] = &quot;aokA1234&quot;
+#gitlab_rails[&#39;smtp_domain&#39;] = &quot;exmail.qq.com&quot;
+gitlab_rails[&#39;smtp_authentication&#39;] = &quot;login&quot;
+gitlab_rails[&#39;smtp_enable_starttls_auto&#39;] = true
+gitlab_rails[&#39;smtp_tls&#39;] = true
+gitlab_rails[&#39;gitlab_email_from&#39;] = &#39;dev@1ycloud.net&#39;
+
+user[&#39;git_user_name&#39;] = &quot;GitLab&quot;
+user[&#39;git_user_email&#39;] = &quot;dev@1ycloud.net&quot;
+</code></pre></li>
+<li><p>启动/维护</p>
+<pre><code> sudo gitlab-ctl reconfigure  #重新加载配置, 每次重新配置，都需要执行
+ sodu gitlab-ctl stop     #停止
+ sodu gitlab-ctl start    #启动
+
+ 查看日志:
+ tail -f /var/log/gitlab/gitlab-rails/production.log
+
+ 切换git注目录
+ vi /etc/passwd   #找git用户，有两个1个是老的git服务，一个是gitlab服务，开启需要的即可
+
+ #发送邮件测试
+ gitlab-rails console     
+ Notify.test_email(&#39;tank@1ycloud.net&#39;, &#39;Message Subject&#39;, &#39;Message Body&#39;).deliver_now
+</code></pre></li>
+</ul>
+<h2 id="四、导入项目"><a href="#四、导入项目" class="headerlink" title="四、导入项目"></a>四、导入项目</h2><pre><code>#创建导入目录 
+#sudo -u git mkdir /var/opt/gitlab/git-data/repository-import-&lt;群组名&gt;/群组名
+#示例
+sudo -u git mkdir /home/git/gitlab-repositories/repository-import-other
+sudo -u git mkdir /home/git/gitlab-repositories/repository-import-other/other
+
+#拷贝原来Git版本库
+cp -rf /home/git/repositories/bm_radio.git /home/git/gitlab-repositories/repository-import-other/other/
+
+#修改权限
+chown -R git:git  /home/git/gitlab-repositories/repository-import-other
+
+#导入代码
+gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-import-other&#39;]
+</code></pre><p>​    </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Java/rabbitmq使用/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1799,229 +2077,6 @@ http://127.0.0.1:8888
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Java/如何返回方法的参数名称/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="谭小凯">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="谭小凯学习笔记">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="谭小凯学习笔记" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/开发/Java/如何返回方法的参数名称/" itemprop="url">
-                  如何返回方法的参数名称
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-28T17:30:04+08:00">
-                2016-12-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/" itemprop="url" rel="index">
-                    <span itemprop="name">开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这两天接手一个新项目的代码，需要对整个项目的Spring框架从3.2.1 升级到4.2.9。因为涉及底层改动比较大，需要对整个服务进行全面的测试。我想做一个测试功能，把服务所有能请求的url，对两个不同版本的输出进行比对来验证升级是否没有问题。在反射MVC的所有Mapping的请求时，发现只能反射方法中的参数类型，而不能获取参数的名称。在网上查了些资料终于找到了解决的方法。</p>
-<h3 id="获取SpringMvc所有注册的请求信息"><a href="#获取SpringMvc所有注册的请求信息" class="headerlink" title="获取SpringMvc所有注册的请求信息"></a>获取SpringMvc所有注册的请求信息</h3><pre><code>//核心包
-
-import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
-
-//关键代码
-{
-    Map&lt;RequestMappingInfo, HandlerMethod&gt; handlerMethods = requestMappingHandlerMapping.getHandlerMethods();
-    Set&lt;RequestMappingInfo&gt; keySet = handlerMethods.keySet();
-
-    for (RequestMappingInfo requestMappingInfo : keySet) {
-            // 请求路径
-            String path = requestMappingInfo.getPatternsCondition().toString();
-
-            // 请求方法
-            String requestMethod = requestMappingInfo.getMethodsCondition().toString();
-
-            // 返回header类型
-            String responseType = requestMappingInfo.getProducesCondition().toString();
-
-            // 获取参数名称
-            HandlerMethod method = handlerMethods.get(requestMappingInfo);
-            List&lt;String&gt; parameters = parseParamNames(method.getBeanType(), method.getMethod().getName());
-    }
-}
-
-</code></pre><h3 id="解析方法的参数名称"><a href="#解析方法的参数名称" class="headerlink" title="解析方法的参数名称"></a>解析方法的参数名称</h3><pre><code>//需要依赖工具类 
-&lt;dependency&gt;
-    &lt;groupId&gt;javassist&lt;/groupId&gt;
-    &lt;artifactId&gt;javassist&lt;/artifactId&gt;
-    &lt;version&gt;3.4.GA&lt;/version&gt;
-&lt;/dependency&gt;
-
-//关键代码
-private List&lt;String&gt; parseParamNames(Class clazz, String methodName ){
-        List&lt;String&gt; returnList = new ArrayList();
-        try { 
-            //官方鼓励使用这种方法
-            ClassPool pool = ClassPool.getDefault();
-            ClassClassPath classPath = new ClassClassPath(clazz);
-            pool.insertClassPath(classPath);
-
-            //使用绝对路径方式
-            //ClassPool pool = ClassPool.getDefault();
-            //pool.insertClassPath(&quot;/path/xxxxxxxxxxx.jar&quot;);
-
-            CtClass cc = pool.get(clazz.getName());  
-            CtMethod cm = cc.getDeclaredMethod(methodName);  
-
-            //使用javaassist的反射方法获取方法的参数名  
-            MethodInfo methodInfo = cm.getMethodInfo();  
-            CodeAttribute codeAttribute = methodInfo.getCodeAttribute();  
-            LocalVariableAttribute attr = (LocalVariableAttribute) codeAttribute.getAttribute(LocalVariableAttribute.tag);  
-            if (attr == null) {
-                return returnList;
-            }  
-            String[] paramNames = new String[cm.getParameterTypes().length];  
-            int pos = Modifier.isStatic(cm.getModifiers()) ? 0 : 1;  
-            for (int i = 0; i &lt; paramNames.length; i++)  {
-                paramNames[i] = attr.variableName(i + pos);
-            }
-            for (int i = 0; i &lt; paramNames.length; i++) {  
-                returnList.add(paramNames[i]);  
-            }
-        }  catch(Exception e){
-            e.printStackTrace();
-        }
-        return returnList;
-}
-</code></pre><p>在做这个解析的时候遇到了javassist.NotFoundException 异常，主要原因是我使用的jar包的方式运行，classpath没有找到。按照我代码中的两种方式可以解决这种问题。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2069,7 +2124,7 @@ private List&lt;String&gt; parseParamNames(Class clazz, String methodName ){
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

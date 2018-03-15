@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="证书,OpenSSL," />
+  <meta name="keywords" content="Git,GitService," />
 
 
 
@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="创建自签名证书的步骤第1步：生成私钥openssl genrsa -des3 -out server.key 2048  说明：生成rsa私钥，des3算法，2048位强度，server.key是秘钥文件名。注意：生成私钥，需要提供一个至少4位的密码 第2步：生成CSR（证书签名请求）openssl req -new -key server.key -out server.csr 说明：需要依次输">
-<meta name="keywords" content="证书,OpenSSL">
+<meta name="description" content="​    GitLab 是一个用于仓库管理系统的开源项目。使用Git作为代码管理工具，并在此基础上搭建起来的web服务。可通过Web界面进行访问公开的或者私人项目。它拥有与Github类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序(Wall)进行交流。它还提供一个代码片段收集功能可以轻松实现代">
+<meta name="keywords" content="Git,GitService">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenSSL 生成自签名证书">
-<meta property="og:url" content="http://yoursite.com/开发/Java/OpenSSL-生成自签名证书/index.html">
+<meta property="og:title" content="GitLab安装维护笔记">
+<meta property="og:url" content="http://yoursite.com/开发/Git/GitLab安装笔记/index.html">
 <meta property="og:site_name" content="谭小凯学习笔记">
-<meta property="og:description" content="创建自签名证书的步骤第1步：生成私钥openssl genrsa -des3 -out server.key 2048  说明：生成rsa私钥，des3算法，2048位强度，server.key是秘钥文件名。注意：生成私钥，需要提供一个至少4位的密码 第2步：生成CSR（证书签名请求）openssl req -new -key server.key -out server.csr 说明：需要依次输">
+<meta property="og:description" content="​    GitLab 是一个用于仓库管理系统的开源项目。使用Git作为代码管理工具，并在此基础上搭建起来的web服务。可通过Web界面进行访问公开的或者私人项目。它拥有与Github类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序(Wall)进行交流。它还提供一个代码片段收集功能可以轻松实现代">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-15T06:08:11.291Z">
+<meta property="og:updated_time" content="2018-03-15T09:31:07.221Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenSSL 生成自签名证书">
-<meta name="twitter:description" content="创建自签名证书的步骤第1步：生成私钥openssl genrsa -des3 -out server.key 2048  说明：生成rsa私钥，des3算法，2048位强度，server.key是秘钥文件名。注意：生成私钥，需要提供一个至少4位的密码 第2步：生成CSR（证书签名请求）openssl req -new -key server.key -out server.csr 说明：需要依次输">
+<meta name="twitter:title" content="GitLab安装维护笔记">
+<meta name="twitter:description" content="​    GitLab 是一个用于仓库管理系统的开源项目。使用Git作为代码管理工具，并在此基础上搭建起来的web服务。可通过Web界面进行访问公开的或者私人项目。它拥有与Github类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序(Wall)进行交流。它还提供一个代码片段收集功能可以轻松实现代">
 
 
 
@@ -123,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/开发/Java/OpenSSL-生成自签名证书/"/>
+  <link rel="canonical" href="http://yoursite.com/开发/Git/GitLab安装笔记/"/>
 
 
 
 
 
-  <title> OpenSSL 生成自签名证书 | 谭小凯学习笔记 </title>
+  <title> GitLab安装维护笔记 | 谭小凯学习笔记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +252,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Java/OpenSSL-生成自签名证书/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Git/GitLab安装笔记/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="谭小凯">
@@ -276,7 +276,7 @@
             
             
               
-                OpenSSL 生成自签名证书
+                GitLab安装维护笔记
               
             
           </h1>
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-27T10:23:55+08:00">
-                2016-12-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-13T19:01:48+08:00">
+                2018-01-13
               </time>
             
 
@@ -325,8 +325,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/开发/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
                   </a>
                 </span>
 
@@ -360,36 +360,133 @@
       
 
       
-        <h2 id="创建自签名证书的步骤"><a href="#创建自签名证书的步骤" class="headerlink" title="创建自签名证书的步骤"></a>创建自签名证书的步骤</h2><h3 id="第1步：生成私钥"><a href="#第1步：生成私钥" class="headerlink" title="第1步：生成私钥"></a>第1步：生成私钥</h3><pre><code>openssl genrsa -des3 -out server.key 2048
-
-</code></pre><p>说明：生成rsa私钥，des3算法，2048位强度，server.key是秘钥文件名。<br>注意：生成私钥，需要提供一个至少4位的密码</p>
-<h3 id="第2步：生成CSR（证书签名请求）"><a href="#第2步：生成CSR（证书签名请求）" class="headerlink" title="第2步：生成CSR（证书签名请求）"></a>第2步：生成CSR（证书签名请求）</h3><pre><code>openssl req -new -key server.key -out server.csr
-</code></pre><p>说明：需要依次输入国家，地区，城市，组织，组织单位，Common Name和Email。其中Common Name，可以写自己的名字或者域名，如果要支持https，Common Name应该与域名保持一致，否则会引起浏览器警告。<br>示例：</p>
-<pre><code>Country Name (2 letter code) [AU]:CN  
-State or Province Name (full name) [Some-State]:Hubei  
-Locality Name (eg, city) []:Wuhan
-Organization Name (eg, company) [Internet Widgits Pty Ltd]:xxx
-Organizational Unit Name (eg, section) []:info technology
-Common Name (e.g. server FQDN or YOUR name) []:192.168.1.114
-Email Address []:
-</code></pre><h3 id="第3步：删除私钥中的密码"><a href="#第3步：删除私钥中的密码" class="headerlink" title="第3步：删除私钥中的密码"></a>第3步：删除私钥中的密码</h3><pre><code>cp server.key server.key.org
-openssl rsa -in server.key.org -out server.key
-</code></pre><h3 id="第4步：生成自签名证书"><a href="#第4步：生成自签名证书" class="headerlink" title="第4步：生成自签名证书"></a>第4步：生成自签名证书</h3><pre><code>$ openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt
-</code></pre><p>如果你不想花钱让CA签名，或者只是测试SSL的具体实现。那么，现在便可以着手生成一个自签名的证书了。<br>需要注意的是，在使用自签名的临时证书时，浏览器会提示证书的颁发机构是未知的。crt上有证书持有人的信息，持有人的公钥，以及签署者的签名等信息。当用户安装了证书之后，便意味着信任了这份证书，同时拥有了其中的公钥。证书上会说明用途，例如服务器认证，客户端认证，或者签署其他证书。当系统收到一份新的证书的时候，证书会说明，是由谁签署的。如果这个签署者确实可以签署其他证书，并且收到证书上的签名和签署者的公钥可以对上的时候，系统就自动信任新的证书。</p>
-<a id="more"></a>
-<h2 id="数字证书（Certificate）"><a href="#数字证书（Certificate）" class="headerlink" title="数字证书（Certificate）"></a>数字证书（Certificate）</h2><p>所谓数字证书，是一种用于电脑的身份识别机制。由数字证书颁发机构（CA）对使用私钥创建的签名请求文件做的签名（盖章），表示CA结构对证书持有者的认可。数字证书拥有以下几个优点：</p>
-<ul>
-<li>使用数字证书能够提高用户的可信度</li>
-<li>数字证书中的公钥，能够与服务端的私钥配对使用，实现数据传输过程中的加密和解密</li>
-<li>在证认使用者身份期间，使用者的敏感个人数据并不会被传输至证书持有者的网络系统上</li>
-<li><p>X.509证书包含三个文件：key，csr，crt。</p>
-</li>
-<li><p>key是服务器上的私钥文件，用于对发送给客户端数据的加密，以及对从客户端接收到数据的解密</p>
-</li>
-<li>csr是证书签名请求文件，用于提交给证书颁发机构（CA）对证书签名</li>
-<li>crt是由证书颁发机构（CA）签名后的证书，或者是开发者自签名的证书，包含证书持有人的信息，持有人的公钥，以及签署者的签名等信息</li>
+        <p>​    GitLab 是一个用于仓库管理系统的开源项目。使用<a href="http://baike.baidu.com/view/1531489.htm" target="_blank" rel="noopener">Git</a>作为代码管理工具，并在此基础上搭建起来的web服务。可通过Web界面进行访问公开的或者私人项目。它拥有与Github类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序(Wall)进行交流。它还提供一个代码片段收集功能可以轻松实现代码复用。</p>
+<h2 id="一、参考文档"><a href="#一、参考文档" class="headerlink" title="一、参考文档"></a>一、参考文档</h2><ul>
+<li><a href="https://www.gitlab.com.cn/installation/#centos-7" target="_blank" rel="noopener">https://www.gitlab.com.cn/installation/#centos-7</a></li>
+<li><a href="https://www.cnblogs.com/straycats/p/7637373.html" target="_blank" rel="noopener">https://www.cnblogs.com/straycats/p/7637373.html</a></li>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/</a></li>
+<li><a href="http://blog.csdn.net/wujiangwei567/article/details/53690646" target="_blank" rel="noopener">http://blog.csdn.net/wujiangwei567/article/details/53690646</a></li>
 </ul>
-<p>备注：在密码学中，X.509是一个标准，规范了公开秘钥认证、证书吊销列表、授权凭证、凭证路径验证算法等。</p>
+<h2 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h2><ul>
+<li><p>前期准备</p>
+<pre><code>#使用国内镜像：
+#新建 vi /etc/yum.repos.d/gitlab-ce.repo，内容为：
+
+[gitlab-ce]  
+name=gitlab-ce  
+baseurl=http://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7  
+repo_gpgcheck=0  
+gpgcheck=0  
+enabled=1  
+gpgkey=https://packages.gitlab.com/gpg.key  
+
+sudo yum makecache
+</code></pre></li>
+<li><p>安装</p>
+<pre><code>#安装ssh服务，设置防火墙
+sudo yum install -y curl policycoreutils-python openssh-server
+sudo systemctl enable sshd
+sudo systemctl start sshd
+sudo firewall-cmd --permanent --add-service=http
+sudo systemctl reload firewalld
+
+#邮件服务
+sudo yum install postfix -y
+sudo systemctl enable postfix
+sudo systemctl start postfix
+
+#安装gitlab
+curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
+sudo yum install gitlab-ce -y 
+</code></pre></li>
+<li><p>汉化</p>
+<pre><code>mkdir /opt/tmp
+cd /opt/tmp
+
+#下载最新的汉化包
+#git clone https://gitlab.com/xhang/gitlab.git
+#指定版本下载,如下载10.5.4，可以运行下面的语句
+git clone https://gitlab.com/xhang/gitlab.git -b v10.5.4-zh
+
+#查看该汉化补丁的版本
+cat gitlab/VERSION
+
+#比较汉化标签和原标签，导出 patch 用的 diff 文件
+cd /opt/tmp/gitlab/
+git diff v10.5.4 v10.5.4-zh &gt; ../10.5.4-zh.diff
+
+#将补丁更新到gitlab中
+cd /opt/tmp
+yum install patch -y 
+patch -d /opt/gitlab/embedded/service/gitlab-rails -p1 &lt; 10.5.4-zh.diff
+
+cd /opt
+rm -rf /opt/tmp
+</code></pre></li>
+</ul>
+<h2 id="三、配置"><a href="#三、配置" class="headerlink" title="三、配置"></a>三、配置</h2><ul>
+<li><p>配置gitlab</p>
+<pre><code>vi /etc/gitlab/gitlab.rb
+
+修改:
+external_url &#39;http://120.77.2.93:7000&#39;
+
+unicorn[&#39;listen&#39;] = &#39;127.0.0.1&#39;
+unicorn[&#39;port&#39;] = 3000
+
+#主目录
+git_data_dirs({
+   &quot;default&quot; =&gt; {
+     &quot;path&quot; =&gt; &quot;/home/git/gitlab-repositories&quot;
+    }
+ })
+
+#邮件服务器设置 
+gitlab_rails[&#39;smtp_enable&#39;] = true
+gitlab_rails[&#39;smtp_address&#39;] = &quot;smtp.exmail.qq.com&quot;
+gitlab_rails[&#39;smtp_port&#39;] = 465
+gitlab_rails[&#39;smtp_user_name&#39;] = &quot;dev@1ycloud.net&quot;
+gitlab_rails[&#39;smtp_password&#39;] = &quot;aokA1234&quot;
+#gitlab_rails[&#39;smtp_domain&#39;] = &quot;exmail.qq.com&quot;
+gitlab_rails[&#39;smtp_authentication&#39;] = &quot;login&quot;
+gitlab_rails[&#39;smtp_enable_starttls_auto&#39;] = true
+gitlab_rails[&#39;smtp_tls&#39;] = true
+gitlab_rails[&#39;gitlab_email_from&#39;] = &#39;dev@1ycloud.net&#39;
+
+user[&#39;git_user_name&#39;] = &quot;GitLab&quot;
+user[&#39;git_user_email&#39;] = &quot;dev@1ycloud.net&quot;
+</code></pre></li>
+<li><p>启动/维护</p>
+<pre><code> sudo gitlab-ctl reconfigure  #重新加载配置, 每次重新配置，都需要执行
+ sodu gitlab-ctl stop     #停止
+ sodu gitlab-ctl start    #启动
+
+ 查看日志:
+ tail -f /var/log/gitlab/gitlab-rails/production.log
+
+ 切换git注目录
+ vi /etc/passwd   #找git用户，有两个1个是老的git服务，一个是gitlab服务，开启需要的即可
+
+ #发送邮件测试
+ gitlab-rails console     
+ Notify.test_email(&#39;tank@1ycloud.net&#39;, &#39;Message Subject&#39;, &#39;Message Body&#39;).deliver_now
+</code></pre></li>
+</ul>
+<h2 id="四、导入项目"><a href="#四、导入项目" class="headerlink" title="四、导入项目"></a>四、导入项目</h2><pre><code>#创建导入目录 
+#sudo -u git mkdir /var/opt/gitlab/git-data/repository-import-&lt;群组名&gt;/群组名
+#示例
+sudo -u git mkdir /home/git/gitlab-repositories/repository-import-other
+sudo -u git mkdir /home/git/gitlab-repositories/repository-import-other/other
+
+#拷贝原来Git版本库
+cp -rf /home/git/repositories/bm_radio.git /home/git/gitlab-repositories/repository-import-other/other/
+
+#修改权限
+chown -R git:git  /home/git/gitlab-repositories/repository-import-other
+
+#导入代码
+gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-import-other&#39;]
+</code></pre><p>​    </p>
 
       
     </div>
@@ -413,9 +510,9 @@ openssl rsa -in server.key.org -out server.key
       
         <div class="post-tags">
           
-            <a href="/tags/证书/" rel="tag"># 证书</a>
+            <a href="/tags/Git/" rel="tag"># Git</a>
           
-            <a href="/tags/OpenSSL/" rel="tag"># OpenSSL</a>
+            <a href="/tags/GitService/" rel="tag"># GitService</a>
           
         </div>
       
@@ -424,8 +521,8 @@ openssl rsa -in server.key.org -out server.key
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/开发/Redis/Redis-cli命令总结/" rel="next" title="Redis-cli命令总结">
-                <i class="fa fa-chevron-left"></i> Redis-cli命令总结
+              <a href="/开发/Java/rabbitmq使用/" rel="next" title="Rabbitmq使用">
+                <i class="fa fa-chevron-left"></i> Rabbitmq使用
               </a>
             
           </div>
@@ -434,8 +531,8 @@ openssl rsa -in server.key.org -out server.key
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/维护/Nginx/Nginx配置说明/" rel="prev" title="Nginx配置说明">
-                Nginx配置说明 <i class="fa fa-chevron-right"></i>
+              <a href="/开发/Git/Gogs安装笔记/" rel="prev" title="Gogs安装笔记">
+                Gogs安装笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -559,7 +656,7 @@ openssl rsa -in server.key.org -out server.key
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建自签名证书的步骤"><span class="nav-number">1.</span> <span class="nav-text">创建自签名证书的步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1步：生成私钥"><span class="nav-number">1.1.</span> <span class="nav-text">第1步：生成私钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2步：生成CSR（证书签名请求）"><span class="nav-number">1.2.</span> <span class="nav-text">第2步：生成CSR（证书签名请求）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3步：删除私钥中的密码"><span class="nav-number">1.3.</span> <span class="nav-text">第3步：删除私钥中的密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4步：生成自签名证书"><span class="nav-number">1.4.</span> <span class="nav-text">第4步：生成自签名证书</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字证书（Certificate）"><span class="nav-number">2.</span> <span class="nav-text">数字证书（Certificate）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、参考文档"><span class="nav-number">1.</span> <span class="nav-text">一、参考文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、安装"><span class="nav-number">2.</span> <span class="nav-text">二、安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、配置"><span class="nav-number">3.</span> <span class="nav-text">三、配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、导入项目"><span class="nav-number">4.</span> <span class="nav-text">四、导入项目</span></a></li></ol></div>
             
 
           </div>
