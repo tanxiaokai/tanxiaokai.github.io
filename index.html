@@ -707,7 +707,7 @@ rpm -ihv socat-1.7.2.3-1.el6.x86_64.rpm
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/维护/Git/Git-SSH-Key-生成步骤/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/Git/SSH/Git-SSH-Key-生成步骤/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="谭小凯">
@@ -732,7 +732,7 @@ rpm -ihv socat-1.7.2.3-1.el6.x86_64.rpm
             
               
                 
-                <a class="post-title-link" href="/维护/Git/Git-SSH-Key-生成步骤/" itemprop="url">
+                <a class="post-title-link" href="/Git/SSH/Git-SSH-Key-生成步骤/" itemprop="url">
                   Git SSH Key 生成步骤
                 </a>
               
@@ -772,8 +772,8 @@ rpm -ihv socat-1.7.2.3-1.el6.x86_64.rpm
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/维护/" itemprop="url" rel="index">
-                    <span itemprop="name">维护</span>
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
                   </a>
                 </span>
 
@@ -783,8 +783,8 @@ rpm -ihv socat-1.7.2.3-1.el6.x86_64.rpm
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/维护/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
+                  <a href="/categories/Git/SSH/" itemprop="url" rel="index">
+                    <span itemprop="name">SSH</span>
                   </a>
                 </span>
 
@@ -823,11 +823,13 @@ rpm -ihv socat-1.7.2.3-1.el6.x86_64.rpm
             <h3 id="一-、设置Git的user-name和email"><a href="#一-、设置Git的user-name和email" class="headerlink" title="一 、设置Git的user name和email"></a>一 、设置Git的user name和email</h3><pre><code>git config --global user.name &quot;username&quot;
 git config --global user.email &quot;email@gmail.com&quot;
 </code></pre><h3 id="二、生成SSH密钥过程"><a href="#二、生成SSH密钥过程" class="headerlink" title="二、生成SSH密钥过程"></a>二、生成SSH密钥过程</h3><h4 id="1-查看是否已经有了ssh密钥-如果没有密钥则不会有此文件夹，有则备份删除"><a href="#1-查看是否已经有了ssh密钥-如果没有密钥则不会有此文件夹，有则备份删除" class="headerlink" title="1.查看是否已经有了ssh密钥, 如果没有密钥则不会有此文件夹，有则备份删除"></a>1.查看是否已经有了ssh密钥, 如果没有密钥则不会有此文件夹，有则备份删除</h4><pre><code>cd ~/.ssh
-</code></pre><h4 id="2-生存密钥"><a href="#2-生存密钥" class="headerlink" title="2.生存密钥"></a>2.生存密钥</h4><pre><code>$ ssh-keygen -t rsa -C “haiyan.xu.vip@gmail.com”
+</code></pre><h4 id="2-生存密钥"><a href="#2-生存密钥" class="headerlink" title="2.生存密钥"></a>2.生存密钥</h4><pre><code>$ ssh-keygen -t rsa -C &quot;hostname&quot;
 </code></pre><p>按3个回车，密码为空。<br>最后得到了两个文件：id_rsa和id_rsa.pub</p>
 <h4 id="3-添加密钥到ssh"><a href="#3-添加密钥到ssh" class="headerlink" title="3.添加密钥到ssh"></a>3.添加密钥到ssh</h4><pre><code>ssh-add 文件名
+ssh-add ~/.ssh/id_rsa.pub
 </code></pre><p>需要之前输入密码。</p>
-<h4 id="4-添加ssh密钥，这要添加的是“id-rsa-pub”里面的公钥。"><a href="#4-添加ssh密钥，这要添加的是“id-rsa-pub”里面的公钥。" class="headerlink" title="4.添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥。"></a>4.添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥。</h4><h4 id="5-测试："><a href="#5-测试：" class="headerlink" title="5.测试："></a>5.测试：</h4><pre><code>ssh git@192.168.1.114.com
+<h4 id="4-添加ssh密钥，这要添加的是“id-rsa-pub”里面的公钥。"><a href="#4-添加ssh密钥，这要添加的是“id-rsa-pub”里面的公钥。" class="headerlink" title="4.添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥。"></a>4.添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥。</h4><pre><code>cat ~/.ssh/id_rsa.pub
+</code></pre><h4 id="5-测试："><a href="#5-测试：" class="headerlink" title="5.测试："></a>5.测试：</h4><pre><code>ssh git@192.168.1.114.com
 </code></pre>
           
         
@@ -866,7 +868,7 @@ git config --global user.email &quot;email@gmail.com&quot;
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Jenkins/Jenkins安装与配置/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/Jenkins/Jenkins安装与配置/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="谭小凯">
@@ -891,7 +893,7 @@ git config --global user.email &quot;email@gmail.com&quot;
             
               
                 
-                <a class="post-title-link" href="/开发/Jenkins/Jenkins安装与配置/" itemprop="url">
+                <a class="post-title-link" href="/Jenkins/Jenkins安装与配置/" itemprop="url">
                   Jenkins安装与配置
                 </a>
               
@@ -931,18 +933,7 @@ git config --global user.email &quot;email@gmail.com&quot;
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/" itemprop="url" rel="index">
-                    <span itemprop="name">开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/Jenkins/" itemprop="url" rel="index">
+                  <a href="/categories/Jenkins/" itemprop="url" rel="index">
                     <span itemprop="name">Jenkins</span>
                   </a>
                 </span>
@@ -985,7 +976,7 @@ git config --global user.email &quot;email@gmail.com&quot;
 </ol>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/开发/Jenkins/Jenkins安装与配置/#more" rel="contents">
+            <a class="btn" href="/Jenkins/Jenkins安装与配置/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1026,7 +1017,7 @@ git config --global user.email &quot;email@gmail.com&quot;
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Java/Tomcat-JDNI配置说明/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java/Tomcat/JNDI/Tomcat-JDNI配置说明/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="谭小凯">
@@ -1051,7 +1042,7 @@ git config --global user.email &quot;email@gmail.com&quot;
             
               
                 
-                <a class="post-title-link" href="/开发/Java/Tomcat-JDNI配置说明/" itemprop="url">
+                <a class="post-title-link" href="/Java/Tomcat/JNDI/Tomcat-JDNI配置说明/" itemprop="url">
                   Tomcat JDNI配置说明
                 </a>
               
@@ -1091,8 +1082,8 @@ git config --global user.email &quot;email@gmail.com&quot;
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/" itemprop="url" rel="index">
-                    <span itemprop="name">开发</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -1102,8 +1093,19 @@ git config --global user.email &quot;email@gmail.com&quot;
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/Java/Tomcat/" itemprop="url" rel="index">
+                    <span itemprop="name">Tomcat</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/Tomcat/JNDI/" itemprop="url" rel="index">
+                    <span itemprop="name">JNDI</span>
                   </a>
                 </span>
 
@@ -1141,7 +1143,7 @@ git config --global user.email &quot;email@gmail.com&quot;
           <p>最近接手的老项目，查看错误日志的时候发现有很多数据库连接错误。发现使用的是Tomcat JNDI方式的链接池。Tomcat JNDI方式默认使用DBCP链接池，备一个JDNI配置的常用参数说明。</p>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/开发/Java/Tomcat-JDNI配置说明/#more" rel="contents">
+            <a class="btn" href="/Java/Tomcat/JNDI/Tomcat-JDNI配置说明/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1182,7 +1184,7 @@ git config --global user.email &quot;email@gmail.com&quot;
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Maven/Maven聚合与继承/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/Maven/Maven聚合与继承/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="谭小凯">
@@ -1207,7 +1209,7 @@ git config --global user.email &quot;email@gmail.com&quot;
             
               
                 
-                <a class="post-title-link" href="/开发/Maven/Maven聚合与继承/" itemprop="url">
+                <a class="post-title-link" href="/Maven/Maven聚合与继承/" itemprop="url">
                   Maven聚合与继承
                 </a>
               
@@ -1247,18 +1249,7 @@ git config --global user.email &quot;email@gmail.com&quot;
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/" itemprop="url" rel="index">
-                    <span itemprop="name">开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/Maven/" itemprop="url" rel="index">
+                  <a href="/categories/Maven/" itemprop="url" rel="index">
                     <span itemprop="name">Maven</span>
                   </a>
                 </span>
@@ -1297,7 +1288,7 @@ git config --global user.email &quot;email@gmail.com&quot;
           <h2 id="Maven继承"><a href="#Maven继承" class="headerlink" title="Maven继承"></a>Maven继承</h2><h3 id="为什么要使用继承"><a href="#为什么要使用继承" class="headerlink" title="为什么要使用继承"></a>为什么要使用继承</h3><p>我们在项目开发的过程中，大多数情况都会把项目拆分成多个子模块独立开发。这些模块在各自的开发过程中都可能引入很多第三方依赖包，如Spring、Junit、JSON等。这时如何问题来了，如何保证所有子模块依赖的第三方包使用的版本一致？如何能快速对所有子模块对应依赖包的版本切换？Maven给我提供的项目继承关系可以很好的解决这个问题。</p>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/开发/Maven/Maven聚合与继承/#more" rel="contents">
+            <a class="btn" href="/Maven/Maven聚合与继承/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1338,7 +1329,7 @@ git config --global user.email &quot;email@gmail.com&quot;
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Java/Spring-Redis-Mybatis整合之使用注解方式/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java/Spring/Redis/Mybatis/Spring-Redis-Mybatis整合之使用注解方式/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="谭小凯">
@@ -1363,7 +1354,7 @@ git config --global user.email &quot;email@gmail.com&quot;
             
               
                 
-                <a class="post-title-link" href="/开发/Java/Spring-Redis-Mybatis整合之使用注解方式/" itemprop="url">
+                <a class="post-title-link" href="/Java/Spring/Redis/Mybatis/Spring-Redis-Mybatis整合之使用注解方式/" itemprop="url">
                   Spring+Redis+Mybatis整合之使用注解方式
                 </a>
               
@@ -1403,8 +1394,8 @@ git config --global user.email &quot;email@gmail.com&quot;
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/" itemprop="url" rel="index">
-                    <span itemprop="name">开发</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -1414,8 +1405,30 @@ git config --global user.email &quot;email@gmail.com&quot;
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/Java/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/Spring/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/Spring/Redis/Mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis</span>
                   </a>
                 </span>
 
@@ -1453,7 +1466,7 @@ git config --global user.email &quot;email@gmail.com&quot;
           <p>   这是另一种整合方式，通过使用Spring缓存相关的注解，来管理Redis缓存. 具体代码可以参考［<a href="https://github.com/tanxiaokai/redis_demo]" target="_blank" rel="noopener">https://github.com/tanxiaokai/redis_demo]</a> 下的SrpingCache</p>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/开发/Java/Spring-Redis-Mybatis整合之使用注解方式/#more" rel="contents">
+            <a class="btn" href="/Java/Spring/Redis/Mybatis/Spring-Redis-Mybatis整合之使用注解方式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1494,7 +1507,7 @@ git config --global user.email &quot;email@gmail.com&quot;
   
 
   <article class="post post-type-tags " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Java/Spring-Redis-Mybatis整合之二级缓存方式/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java/Spring/Redis/Mybatis/Spring-Redis-Mybatis整合之二级缓存方式/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="谭小凯">
@@ -1519,7 +1532,7 @@ git config --global user.email &quot;email@gmail.com&quot;
             
               
                 
-                <a class="post-title-link" href="/开发/Java/Spring-Redis-Mybatis整合之二级缓存方式/" itemprop="url">
+                <a class="post-title-link" href="/Java/Spring/Redis/Mybatis/Spring-Redis-Mybatis整合之二级缓存方式/" itemprop="url">
                   Spring+Redis+Mybatis整合之二级缓存方式
                 </a>
               
@@ -1559,8 +1572,8 @@ git config --global user.email &quot;email@gmail.com&quot;
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/" itemprop="url" rel="index">
-                    <span itemprop="name">开发</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -1570,8 +1583,30 @@ git config --global user.email &quot;email@gmail.com&quot;
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/Java/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/Spring/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/Spring/Redis/Mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis</span>
                   </a>
                 </span>
 
@@ -1609,7 +1644,7 @@ git config --global user.email &quot;email@gmail.com&quot;
           <p>   这段时间一直在重新研究Redis,希望能整合到当前项目中来提供缓存服务。redis做为二级缓存方式的优点就是不用更改原有的业务逻辑，所有Dao相关的数据操作都会自己进行缓存的处理。如取数据时会自动查询缓存，更新数据的时候会自动更新缓存. 但这因为这样的自动性，同时也带来了，对默写缓存想特殊控制时非常麻烦的缺点。具体代码可以参考［<a href="https://github.com/tanxiaokai/redis_demo]" target="_blank" rel="noopener">https://github.com/tanxiaokai/redis_demo]</a> 下的L2Cache</p>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/开发/Java/Spring-Redis-Mybatis整合之二级缓存方式/#more" rel="contents">
+            <a class="btn" href="/Java/Spring/Redis/Mybatis/Spring-Redis-Mybatis整合之二级缓存方式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1650,7 +1685,7 @@ git config --global user.email &quot;email@gmail.com&quot;
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Java/对Spring-MVC输出的JSON加密/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java/Spring/Des加密/对Spring-MVC输出的JSON加密/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="谭小凯">
@@ -1675,7 +1710,7 @@ git config --global user.email &quot;email@gmail.com&quot;
             
               
                 
-                <a class="post-title-link" href="/开发/Java/对Spring-MVC输出的JSON加密/" itemprop="url">
+                <a class="post-title-link" href="/Java/Spring/Des加密/对Spring-MVC输出的JSON加密/" itemprop="url">
                   对Spring MVC输出的JSON加密
                 </a>
               
@@ -1715,8 +1750,8 @@ git config --global user.email &quot;email@gmail.com&quot;
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/" itemprop="url" rel="index">
-                    <span itemprop="name">开发</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -1726,8 +1761,19 @@ git config --global user.email &quot;email@gmail.com&quot;
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/Java/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/Spring/Des加密/" itemprop="url" rel="index">
+                    <span itemprop="name">Des加密</span>
                   </a>
                 </span>
 
@@ -1765,7 +1811,7 @@ git config --global user.email &quot;email@gmail.com&quot;
           <p>由于项目有安全要求，需要对接口返回的JOSN数据加密输出。这里改进MappingJackson2HttpMessageConverter，在配置 message-converters 进行处理。</p>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/开发/Java/对Spring-MVC输出的JSON加密/#more" rel="contents">
+            <a class="btn" href="/Java/Spring/Des加密/对Spring-MVC输出的JSON加密/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1853,7 +1899,7 @@ git config --global user.email &quot;email@gmail.com&quot;
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1862,7 +1908,7 @@ git config --global user.email &quot;email@gmail.com&quot;
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
