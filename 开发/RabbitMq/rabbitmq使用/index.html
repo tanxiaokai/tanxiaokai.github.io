@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="谭小凯学习笔记">
 <meta property="og:description" content="一、下载及安装首先去官网下载最新版本：[http://www.rabbitmq.com/download.html] 需要在CentOS上安装，所以下载对应的RPM包。安装过程就非常方便了，先安装一个erlang，直接在rabbitmq官网上下载到合适的RPM包，[http://www.rabbitmq.com/releases/erlang/] rpm -ihv erlang-18.3.4.4-">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-16T04:06:10.739Z">
+<meta property="og:updated_time" content="2018-03-16T07:41:06.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rabbitmq使用">
 <meta name="twitter:description" content="一、下载及安装首先去官网下载最新版本：[http://www.rabbitmq.com/download.html] 需要在CentOS上安装，所以下载对应的RPM包。安装过程就非常方便了，先安装一个erlang，直接在rabbitmq官网上下载到合适的RPM包，[http://www.rabbitmq.com/releases/erlang/] rpm -ihv erlang-18.3.4.4-">
@@ -422,76 +422,6 @@ service rabbitmq-service start
 </code></pre></li>
 </ol>
 <p>RabbitMQ的四种ExChange<br>[<a href="http://blog.csdn.net/dandanzmc/article/details/52262850]" target="_blank" rel="noopener">http://blog.csdn.net/dandanzmc/article/details/52262850]</a></p>
-<h2 id="五、rabbitmqadmin使用"><a href="#五、rabbitmqadmin使用" class="headerlink" title="五、rabbitmqadmin使用"></a>五、rabbitmqadmin使用</h2><ol>
-<li><p>配置rabbitmqadmin</p>
-<pre><code>#查找位置
-find /var/lib/rabbitmq/ -name &quot;rabbitmqadmin&quot;
-
-#复制，路径更加查找的结果来
-cp -a /var/lib/rabbitmq/rabbit@*-plugins-expand/.../rabbitmqadmin /usr/bin/rabbitmqadmin   
-
-#添加执行权限
-chmod +x /usr/bin/rabbitmqadmin
-</code></pre><p>​</p>
-</li>
-<li><p>使用示例</p>
-<pre><code>#!/bin/bash
-#该脚本用于初始化新用户的RabbitMq相关环境
-
-#参数1是新用户对应的vHost名称
-vHost=$1
-
-#RabbitMq管理员用户名和密码
-adminName=admin
-password=&#39;123456&#39;
-topicName=&#39;ak.topic&#39;
-
-echo &quot;初始化[${vHost}]数据&quot;
-
-#删除vHost
-rabbitmqadmin -u $adminName -p $password delete vhost name=${vHost}
-
-#创建vHost
-rabbitmqadmin -u $adminName -p $password declare vhost name=${vHost}
-
-#赋予权限
-rabbitmqadmin -u $adminName -p $password declare permission vhost=${vHost} user=$adminName configure=&quot;.*&quot; write=&quot;.*&quot; read=&quot;.*&quot;
-
-#创建Exchanges
-rabbitmqadmin -u $adminName -p $password  -V $vHost declare exchange name=$topicName type=topic
-
-#创建queue
-rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=batch_task durable=true
-rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=eis_queue durable=true
-rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=settlement_biz_queue durable=true
-rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=spd_biz_queue durable=true
-
-#创建队列绑定关系
-rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;batch_task&quot; routing_key=&quot;create_batch_task&quot;
-rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;eis_queue&quot; routing_key=&quot;sync_task&quot;
-rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;settlement_biz_queue&quot; routing_key=&quot;spd_biz&quot;
-rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;spd_biz_queue&quot; routing_key=&quot;spd_biz&quot;
-
-echo &quot;初始化[${vHost}]数据-完成&quot;
-
-#显示vhosts
-echo &quot;------------------------vhosts-------------------------------&quot;
-rabbitmqadmin -u $adminName -p $password -V $vHost list vhosts
-
-#显示exchanges
-echo &quot;------------------------exchanges-------------------------------&quot;
-rabbitmqadmin -u $adminName -p $password -V $vHost list exchanges
-
-#显示queues
-echo &quot;-------------------------queues---------------------------------&quot;
-rabbitmqadmin -u $adminName -p $password -V $vHost list queues
-
-#显示bindings
-echo &quot;--------------------------bindings------------------------------&quot;
-rabbitmqadmin -u $adminName -p $password -V $vHost list bindings
-</code></pre><p>​</p>
-</li>
-</ol>
 
       
     </div>
@@ -606,7 +536,7 @@ rabbitmqadmin -u $adminName -p $password -V $vHost list bindings
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -659,7 +589,7 @@ rabbitmqadmin -u $adminName -p $password -V $vHost list bindings
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、下载及安装"><span class="nav-number">1.</span> <span class="nav-text">一、下载及安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、服务启动关闭"><span class="nav-number">2.</span> <span class="nav-text">二、服务启动关闭</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、启用Web后台"><span class="nav-number">3.</span> <span class="nav-text">三、启用Web后台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、配置"><span class="nav-number">4.</span> <span class="nav-text">四、配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、rabbitmqadmin使用"><span class="nav-number">5.</span> <span class="nav-text">五、rabbitmqadmin使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、下载及安装"><span class="nav-number">1.</span> <span class="nav-text">一、下载及安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、服务启动关闭"><span class="nav-number">2.</span> <span class="nav-text">二、服务启动关闭</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、启用Web后台"><span class="nav-number">3.</span> <span class="nav-text">三、启用Web后台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、配置"><span class="nav-number">4.</span> <span class="nav-text">四、配置</span></a></li></ol></div>
             
 
           </div>

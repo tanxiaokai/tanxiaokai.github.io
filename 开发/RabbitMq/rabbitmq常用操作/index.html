@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Jenkins," />
+  <meta name="keywords" content="RabbitMq," />
 
 
 
@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="Jenkins介绍Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复的工作，功能包括：  持续的软件版本发布/测试项目。 监控外部调用执行的工作。">
-<meta name="keywords" content="Jenkins">
+<meta name="description" content="rabbitmqadmin使用">
+<meta name="keywords" content="RabbitMq">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jenkins安装与配置">
-<meta property="og:url" content="http://yoursite.com/维护/Jenkins/Jenkins安装与配置/index.html">
+<meta property="og:title" content="rabbitmq常用操作">
+<meta property="og:url" content="http://yoursite.com/开发/RabbitMq/rabbitmq常用操作/index.html">
 <meta property="og:site_name" content="谭小凯学习笔记">
-<meta property="og:description" content="Jenkins介绍Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复的工作，功能包括：  持续的软件版本发布/测试项目。 监控外部调用执行的工作。">
+<meta property="og:description" content="rabbitmqadmin使用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-16T04:06:10.727Z">
+<meta property="og:updated_time" content="2018-03-16T07:41:06.405Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jenkins安装与配置">
-<meta name="twitter:description" content="Jenkins介绍Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复的工作，功能包括：  持续的软件版本发布/测试项目。 监控外部调用执行的工作。">
+<meta name="twitter:title" content="rabbitmq常用操作">
+<meta name="twitter:description" content="rabbitmqadmin使用">
 
 
 
@@ -123,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/维护/Jenkins/Jenkins安装与配置/"/>
+  <link rel="canonical" href="http://yoursite.com/开发/RabbitMq/rabbitmq常用操作/"/>
 
 
 
 
 
-  <title> Jenkins安装与配置 | 谭小凯学习笔记 </title>
+  <title> rabbitmq常用操作 | 谭小凯学习笔记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +252,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/维护/Jenkins/Jenkins安装与配置/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/RabbitMq/rabbitmq常用操作/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="谭小凯">
@@ -276,7 +276,7 @@
             
             
               
-                Jenkins安装与配置
+                rabbitmq常用操作
               
             
           </h1>
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T09:19:53+08:00">
-                2017-02-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-16T15:32:46+08:00">
+                2018-03-16
               </time>
             
 
@@ -314,8 +314,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/维护/" itemprop="url" rel="index">
-                    <span itemprop="name">维护</span>
+                  <a href="/categories/开发/" itemprop="url" rel="index">
+                    <span itemprop="name">开发</span>
                   </a>
                 </span>
 
@@ -325,8 +325,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/维护/Jenkins/" itemprop="url" rel="index">
-                    <span itemprop="name">Jenkins</span>
+                  <a href="/categories/开发/RabbitMq/" itemprop="url" rel="index">
+                    <span itemprop="name">RabbitMq</span>
                   </a>
                 </span>
 
@@ -360,24 +360,96 @@
       
 
       
-        <h3 id="Jenkins介绍"><a href="#Jenkins介绍" class="headerlink" title="Jenkins介绍"></a>Jenkins介绍</h3><p>Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复的工作，功能包括：</p>
+        <h2 id="rabbitmqadmin使用"><a href="#rabbitmqadmin使用" class="headerlink" title="rabbitmqadmin使用"></a>rabbitmqadmin使用</h2><a id="more"></a>
 <ol>
-<li>持续的软件版本发布/测试项目。</li>
-<li>监控外部调用执行的工作。</li>
+<li><p>配置rabbitmqadmin</p>
+<pre><code>#查找位置
+find /var/lib/rabbitmq/ -name &quot;rabbitmqadmin&quot;
+
+#复制，路径更加查找的结果来
+cp -a /var/lib/rabbitmq/rabbit@*-plugins-expand/.../rabbitmqadmin /usr/bin/rabbitmqadmin   
+
+#添加执行权限
+chmod +x /usr/bin/rabbitmqadmin
+</code></pre></li>
+<li><p>使用rabbitmqadmin<br>查看exchanges</p>
+<pre><code> rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V daxiang list exchanges
+</code></pre><p>查看队列</p>
+<pre><code>rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V daxiang list queues
+</code></pre><p>新增队列</p>
+<pre><code>rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V daxiang declare queue name=settlement_biz_queue durable=true
+</code></pre><p>查看队列中的消息</p>
+<pre><code>rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V prod get queue=eis_queue requeue=true  count=106
+</code></pre><p>发布消息</p>
+<pre><code>rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V prod publish exchange=ak.topic routing_key=spd_biz properties=&#39;{&quot;headers&quot;:{&quot;msgType&quot;:&quot;新增企业产品&quot;},&quot;content_type&quot;:&quot;text/plain&quot;}&#39; payload=&#39;{&quot;edsGoodsId&quot;:&quot;ff8080815e409cfe015e50c52924001d&quot;,&quot;userId&quot;:&quot;ff8080815d54b5c4015d54d5acf80061&quot;}&#39;
+</code></pre><p>清除队列消息</p>
+<pre><code>rabbitmqadmin --host=120.77.2.93 -u rabbitmq_admin -p &#39;passwd&#39; -V ittest purge queue name=batch_task
+</code></pre><p>新增binding</p>
+<pre><code>rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V daxiang declare binding source=&quot;ak.topic&quot; destination_type=&quot;queue&quot; destination=&quot;settlement_biz_queue&quot; routing_key=&quot;spd_biz&quot;
+</code></pre><p>删除binding</p>
+<pre><code> rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V prod delete binding source=&quot;amq.topic&quot; destination_type=&quot;queue&quot; destination=&quot;batch_task&quot; properties_key=&quot;create_batch_task&quot;
+</code></pre></li>
 </ol>
-<a id="more"></a>
-<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><h4 id="1-下载"><a href="#1-下载" class="headerlink" title="1.下载"></a>1.下载</h4><p>从官网下载jenkins的war包，地址<a href="https://jenkins.io/" target="_blank" rel="noopener">https://jenkins.io/</a></p>
-<pre><code>wget https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/2.89.4/jenkins.war
-</code></pre><h4 id="2-启动"><a href="#2-启动" class="headerlink" title="2.启动"></a>2.启动</h4><pre><code>java -jar jenkins.war -Dfile.encoding=utf-8 --httpPort=8888 &amp;
-</code></pre><h4 id="3-首次访问"><a href="#3-首次访问" class="headerlink" title="3.首次访问"></a>3.首次访问</h4><pre><code>#查看初始化密码
-cat /root/.jenkins/secrets/initialAdminPassword
+<ol>
+<li><p>使用示例</p>
+<pre><code>#!/bin/bash
+#该脚本用于初始化新用户的RabbitMq相关环境
 
-#访问地址，输入密码登录, 
-http://127.0.0.1:8888
+#参数1是新用户对应的vHost名称
+vHost=$1
 
-#期间可以选择需要的插件，也可以直接使用推荐的常用插件
+#RabbitMq管理员用户名和密码
+adminName=admin
+password=&#39;123456&#39;
+topicName=&#39;ak.topic&#39;
 
-</code></pre>
+echo &quot;初始化[${vHost}]数据&quot;
+
+#删除vHost
+rabbitmqadmin -u $adminName -p $password delete vhost name=${vHost}
+
+#创建vHost
+rabbitmqadmin -u $adminName -p $password declare vhost name=${vHost}
+
+#赋予权限
+rabbitmqadmin -u $adminName -p $password declare permission vhost=${vHost} user=$adminName configure=&quot;.*&quot; write=&quot;.*&quot; read=&quot;.*&quot;
+
+#创建Exchanges
+rabbitmqadmin -u $adminName -p $password  -V $vHost declare exchange name=$topicName type=topic
+
+#创建queue
+rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=batch_task durable=true
+rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=eis_queue durable=true
+rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=settlement_biz_queue durable=true
+rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=spd_biz_queue durable=true
+
+#创建队列绑定关系
+rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;batch_task&quot; routing_key=&quot;create_batch_task&quot;
+rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;eis_queue&quot; routing_key=&quot;sync_task&quot;
+rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;settlement_biz_queue&quot; routing_key=&quot;spd_biz&quot;
+rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;spd_biz_queue&quot; routing_key=&quot;spd_biz&quot;
+
+echo &quot;初始化[${vHost}]数据-完成&quot;
+
+#显示vhosts
+echo &quot;------------------------vhosts-------------------------------&quot;
+rabbitmqadmin -u $adminName -p $password -V $vHost list vhosts
+
+#显示exchanges
+echo &quot;------------------------exchanges-------------------------------&quot;
+rabbitmqadmin -u $adminName -p $password -V $vHost list exchanges
+
+#显示queues
+echo &quot;-------------------------queues---------------------------------&quot;
+rabbitmqadmin -u $adminName -p $password -V $vHost list queues
+
+#显示bindings
+echo &quot;--------------------------bindings------------------------------&quot;
+rabbitmqadmin -u $adminName -p $password -V $vHost list bindings
+</code></pre><p>​</p>
+</li>
+</ol>
+
       
     </div>
 
@@ -400,7 +472,7 @@ http://127.0.0.1:8888
       
         <div class="post-tags">
           
-            <a href="/tags/Jenkins/" rel="tag"># Jenkins</a>
+            <a href="/tags/RabbitMq/" rel="tag"># RabbitMq</a>
           
         </div>
       
@@ -409,8 +481,8 @@ http://127.0.0.1:8888
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/开发/JNDI/Tomcat-JDNI配置说明/" rel="next" title="Tomcat JDNI配置说明">
-                <i class="fa fa-chevron-left"></i> Tomcat JDNI配置说明
+              <a href="/Docker/Docker常用命令/" rel="next" title="Docker常用命令">
+                <i class="fa fa-chevron-left"></i> Docker常用命令
               </a>
             
           </div>
@@ -418,10 +490,6 @@ http://127.0.0.1:8888
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Git/Git-SSH-Key-生成步骤/" rel="prev" title="Git SSH Key 生成步骤">
-                Git SSH Key 生成步骤 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -544,7 +612,7 @@ http://127.0.0.1:8888
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jenkins介绍"><span class="nav-number">1.</span> <span class="nav-text">Jenkins介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装步骤"><span class="nav-number">2.</span> <span class="nav-text">安装步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-下载"><span class="nav-number">2.1.</span> <span class="nav-text">1.下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-启动"><span class="nav-number">2.2.</span> <span class="nav-text">2.启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-首次访问"><span class="nav-number">2.3.</span> <span class="nav-text">3.首次访问</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#rabbitmqadmin使用"><span class="nav-number">1.</span> <span class="nav-text">rabbitmqadmin使用</span></a></li></ol></div>
             
 
           </div>
