@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Git,GitService," />
+  <meta name="keywords" content="Gogs," />
 
 
 
@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="​    GitLab 是一个用于仓库管理系统的开源项目。使用Git作为代码管理工具，并在此基础上搭建起来的web服务。可通过Web界面进行访问公开的或者私人项目。它拥有与Github类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序(Wall)进行交流。它还提供一个代码片段收集功能可以轻松实现代">
-<meta name="keywords" content="Git,GitService">
+<meta name="description" content="​    Gogs是一款类似Github的开源文件／代码管理系统（基于Git）。它比GitLab小巧很多，占用的系统资源也少。比较适合个人、或者小团队搭建。不过感觉这个项目还比较新，还有一些小的问题。我在Centos 7安装时，遇到了些小麻烦。">
+<meta name="keywords" content="Gogs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GitLab安装维护笔记">
-<meta property="og:url" content="http://yoursite.com/开发/Git/GitLab安装笔记/index.html">
+<meta property="og:title" content="Gogs安装笔记">
+<meta property="og:url" content="http://yoursite.com/Git/Gogs安装笔记/index.html">
 <meta property="og:site_name" content="谭小凯学习笔记">
-<meta property="og:description" content="​    GitLab 是一个用于仓库管理系统的开源项目。使用Git作为代码管理工具，并在此基础上搭建起来的web服务。可通过Web界面进行访问公开的或者私人项目。它拥有与Github类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序(Wall)进行交流。它还提供一个代码片段收集功能可以轻松实现代">
+<meta property="og:description" content="​    Gogs是一款类似Github的开源文件／代码管理系统（基于Git）。它比GitLab小巧很多，占用的系统资源也少。比较适合个人、或者小团队搭建。不过感觉这个项目还比较新，还有一些小的问题。我在Centos 7安装时，遇到了些小麻烦。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-15T09:31:07.221Z">
+<meta property="og:updated_time" content="2018-03-16T03:35:10.800Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GitLab安装维护笔记">
-<meta name="twitter:description" content="​    GitLab 是一个用于仓库管理系统的开源项目。使用Git作为代码管理工具，并在此基础上搭建起来的web服务。可通过Web界面进行访问公开的或者私人项目。它拥有与Github类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序(Wall)进行交流。它还提供一个代码片段收集功能可以轻松实现代">
+<meta name="twitter:title" content="Gogs安装笔记">
+<meta name="twitter:description" content="​    Gogs是一款类似Github的开源文件／代码管理系统（基于Git）。它比GitLab小巧很多，占用的系统资源也少。比较适合个人、或者小团队搭建。不过感觉这个项目还比较新，还有一些小的问题。我在Centos 7安装时，遇到了些小麻烦。">
 
 
 
@@ -123,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/开发/Git/GitLab安装笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/Git/Gogs安装笔记/"/>
 
 
 
 
 
-  <title> GitLab安装维护笔记 | 谭小凯学习笔记 </title>
+  <title> Gogs安装笔记 | 谭小凯学习笔记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +252,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Git/GitLab安装笔记/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/Git/Gogs安装笔记/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="谭小凯">
@@ -276,7 +276,7 @@
             
             
               
-                GitLab安装维护笔记
+                Gogs安装笔记
               
             
           </h1>
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-13T19:01:48+08:00">
-                2018-01-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-03T15:01:48+08:00">
+                2018-02-03
               </time>
             
 
@@ -314,18 +314,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/" itemprop="url" rel="index">
-                    <span itemprop="name">开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/Git/" itemprop="url" rel="index">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
                     <span itemprop="name">Git</span>
                   </a>
                 </span>
@@ -360,133 +349,108 @@
       
 
       
-        <p>​    GitLab 是一个用于仓库管理系统的开源项目。使用<a href="http://baike.baidu.com/view/1531489.htm" target="_blank" rel="noopener">Git</a>作为代码管理工具，并在此基础上搭建起来的web服务。可通过Web界面进行访问公开的或者私人项目。它拥有与Github类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序(Wall)进行交流。它还提供一个代码片段收集功能可以轻松实现代码复用。</p>
-<h2 id="一、参考文档"><a href="#一、参考文档" class="headerlink" title="一、参考文档"></a>一、参考文档</h2><ul>
-<li><a href="https://www.gitlab.com.cn/installation/#centos-7" target="_blank" rel="noopener">https://www.gitlab.com.cn/installation/#centos-7</a></li>
-<li><a href="https://www.cnblogs.com/straycats/p/7637373.html" target="_blank" rel="noopener">https://www.cnblogs.com/straycats/p/7637373.html</a></li>
-<li><a href="https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/</a></li>
-<li><a href="http://blog.csdn.net/wujiangwei567/article/details/53690646" target="_blank" rel="noopener">http://blog.csdn.net/wujiangwei567/article/details/53690646</a></li>
-</ul>
-<h2 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h2><ul>
-<li><p>前期准备</p>
-<pre><code>#使用国内镜像：
-#新建 vi /etc/yum.repos.d/gitlab-ce.repo，内容为：
-
-[gitlab-ce]  
-name=gitlab-ce  
-baseurl=http://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7  
-repo_gpgcheck=0  
-gpgcheck=0  
-enabled=1  
-gpgkey=https://packages.gitlab.com/gpg.key  
-
-sudo yum makecache
+        <p>​    Gogs是一款类似Github的开源文件／代码管理系统（基于Git）。它比GitLab小巧很多，占用的系统资源也少。比较适合个人、或者小团队搭建。不过感觉这个项目还比较新，还有一些小的问题。我在Centos 7安装时，遇到了些小麻烦。</p>
+<a id="more"></a>
+<h2 id="一、下载安装包"><a href="#一、下载安装包" class="headerlink" title="一、下载安装包"></a>一、下载安装包</h2><ul>
+<li><p><a href="https://gogs.io/docs/installation" target="_blank" rel="noopener">官网文档</a></p>
+</li>
+<li><p>创建git用户</p>
+<pre><code>adduser git    
 </code></pre></li>
-<li><p>安装</p>
-<pre><code>#安装ssh服务，设置防火墙
-sudo yum install -y curl policycoreutils-python openssh-server
-sudo systemctl enable sshd
-sudo systemctl start sshd
-sudo firewall-cmd --permanent --add-service=http
-sudo systemctl reload firewalld
-
-#邮件服务
-sudo yum install postfix -y
-sudo systemctl enable postfix
-sudo systemctl start postfix
-
-#安装gitlab
-curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
-sudo yum install gitlab-ce -y 
+<li><p><a href="https://gogs.io/docs/installation/install_from_binary.html" target="_blank" rel="noopener">二进制包</a> 下载 </p>
+<pre><code>su git
+cd /home/git
+wget https://dl.gogs.io/0.11.34/raspi2_armv6.zip  --树莓派
+wget https://dl.gogs.io/0.11.34/linux_amd64.zip   --linux 64
 </code></pre></li>
-<li><p>汉化</p>
-<pre><code>mkdir /opt/tmp
-cd /opt/tmp
-
-#下载最新的汉化包
-#git clone https://gitlab.com/xhang/gitlab.git
-#指定版本下载,如下载10.5.4，可以运行下面的语句
-git clone https://gitlab.com/xhang/gitlab.git -b v10.5.4-zh
-
-#查看该汉化补丁的版本
-cat gitlab/VERSION
-
-#比较汉化标签和原标签，导出 patch 用的 diff 文件
-cd /opt/tmp/gitlab/
-git diff v10.5.4 v10.5.4-zh &gt; ../10.5.4-zh.diff
-
-#将补丁更新到gitlab中
-cd /opt/tmp
-yum install patch -y 
-patch -d /opt/gitlab/embedded/service/gitlab-rails -p1 &lt; 10.5.4-zh.diff
-
-cd /opt
-rm -rf /opt/tmp
+<li><p>解压缩安装包</p>
+<pre><code>unzip raspi2_armv6.zip    --树莓派
+unzip linux_amd64.zip     --linux 64
 </code></pre></li>
 </ul>
-<h2 id="三、配置"><a href="#三、配置" class="headerlink" title="三、配置"></a>三、配置</h2><ul>
-<li><p>配置gitlab</p>
-<pre><code>vi /etc/gitlab/gitlab.rb
-
-修改:
-external_url &#39;http://120.77.2.93:7000&#39;
-
-unicorn[&#39;listen&#39;] = &#39;127.0.0.1&#39;
-unicorn[&#39;port&#39;] = 3000
-
-#主目录
-git_data_dirs({
-   &quot;default&quot; =&gt; {
-     &quot;path&quot; =&gt; &quot;/home/git/gitlab-repositories&quot;
-    }
- })
-
-#邮件服务器设置 
-gitlab_rails[&#39;smtp_enable&#39;] = true
-gitlab_rails[&#39;smtp_address&#39;] = &quot;smtp.exmail.qq.com&quot;
-gitlab_rails[&#39;smtp_port&#39;] = 465
-gitlab_rails[&#39;smtp_user_name&#39;] = &quot;dev@1ycloud.net&quot;
-gitlab_rails[&#39;smtp_password&#39;] = &quot;aokA1234&quot;
-#gitlab_rails[&#39;smtp_domain&#39;] = &quot;exmail.qq.com&quot;
-gitlab_rails[&#39;smtp_authentication&#39;] = &quot;login&quot;
-gitlab_rails[&#39;smtp_enable_starttls_auto&#39;] = true
-gitlab_rails[&#39;smtp_tls&#39;] = true
-gitlab_rails[&#39;gitlab_email_from&#39;] = &#39;dev@1ycloud.net&#39;
-
-user[&#39;git_user_name&#39;] = &quot;GitLab&quot;
-user[&#39;git_user_email&#39;] = &quot;dev@1ycloud.net&quot;
+<h2 id="二、启动、配置服务"><a href="#二、启动、配置服务" class="headerlink" title="二、启动、配置服务"></a>二、启动、配置服务</h2><ul>
+<li><p>直接启动</p>
+<pre><code>./gogs web
 </code></pre></li>
-<li><p>启动/维护</p>
-<pre><code> sudo gitlab-ctl reconfigure  #重新加载配置, 每次重新配置，都需要执行
- sodu gitlab-ctl stop     #停止
- sodu gitlab-ctl start    #启动
-
- 查看日志:
- tail -f /var/log/gitlab/gitlab-rails/production.log
-
- 切换git注目录
- vi /etc/passwd   #找git用户，有两个1个是老的git服务，一个是gitlab服务，开启需要的即可
-
- #发送邮件测试
- gitlab-rails console     
- Notify.test_email(&#39;tank@1ycloud.net&#39;, &#39;Message Subject&#39;, &#39;Message Body&#39;).deliver_now
+<li><p>首次使用需要进行配置</p>
+<p>访问Web：<a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a></p>
+<ol>
+<li><p>执行Mysql脚本创建数据库</p>
+<pre><code>SET GLOBAL innodb_file_per_table = ON,
+        innodb_file_format = Barracuda,
+        innodb_large_prefix = ON;
+DROP DATABASE IF EXISTS gogs;
+CREATE DATABASE IF NOT EXISTS gogs CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+GRANT ALL PRIVILEGES ON gogs.* TO &#39;gogs&#39;@&#39;%&#39; IDENTIFIED BY &#39;aoka20!*&#39; WITH GRANT OPTION;
+</code></pre></li>
+<li><p>创建git仓库主目录</p>
+<pre><code>mkdir /home/git/gogs-repositories
+</code></pre></li>
+<li><p>在页面填写对应内容</p>
+</li>
+<li><p>在点击安装后，可能会出现以下错误，需要不停的执行修复表的sql，执行后在点立即安装，直到所有的sql语句都执行成功为止：</p>
+<pre><code>数据库设置不正确：Error 1709: Index column size too large. The maximum column size is 767 bytes.
+</code></pre><p>修复表sql</p>
+<pre><code>use gogs;
+alter table user ROW_FORMAT=DYNAMIC;
+alter table repository ROW_FORMAT=DYNAMIC;
+alter table login_source ROW_FORMAT=DYNAMIC;
+alter table protect_branch ROW_FORMAT=DYNAMIC;
+alter table protect_branch_whitelist ROW_FORMAT=DYNAMIC;
+alter table email_address ROW_FORMAT=DYNAMIC;
+</code></pre></li>
+</ol>
+</li>
+<li><p>使用supervisor启动</p>
+<p>添加配置文件</p>
+<pre><code> vi /etc/supervisor/conf.d/gogs.conf
+</code></pre><p>添加以下内容</p>
+<pre><code>[program:gogs]
+directory=/home/git/gogs/         
+command=/home/git/gogs/gogs web 
+autostart=true
+autorestart=true
+startsecs=10
+stdout_logfile=/var/log/gogs/stdout.log
+stdout_logfile_maxbytes=1MB
+stdout_logfile_backups=10
+stdout_capture_maxbytes=1MB
+stderr_logfile=/var/log/gogs/stderr.log
+stderr_logfile_maxbytes=1MB
+stderr_logfile_backups=10
+stderr_capture_maxbytes=1MB
+user = git
+environment = HOME=&quot;/home/git&quot;, USER=&quot;git&quot;
+</code></pre><p>更新配置</p>
+<pre><code>supervisorctl update
+supervisorctl reload
 </code></pre></li>
 </ul>
-<h2 id="四、导入项目"><a href="#四、导入项目" class="headerlink" title="四、导入项目"></a>四、导入项目</h2><pre><code>#创建导入目录 
-#sudo -u git mkdir /var/opt/gitlab/git-data/repository-import-&lt;群组名&gt;/群组名
-#示例
-sudo -u git mkdir /home/git/gitlab-repositories/repository-import-other
-sudo -u git mkdir /home/git/gitlab-repositories/repository-import-other/other
+<h2 id="三、-导入已有git仓库"><a href="#三、-导入已有git仓库" class="headerlink" title="三、 导入已有git仓库"></a>三、 导入已有git仓库</h2><ul>
+<li><p>在gogs里面新建要导入的git仓库。注意一定需要同名。例如：导入yard_service</p>
+<pre><code># 在SPD组织下，新建 yard_service 仓库。
+# 切换 git 用户
+  su git
+# 删除创建的目录
+  rm -rf /home/git/gogs-repositories/spd/yard_service.git
+# 拷贝原始git仓库
+  cp -rf /home/git/repositories/yard_service.git  /home/git/gogs-repositories/spd/
+# 重新初始化git
+  cd  /home/git/gogs-repositories/spd/yard_service.git
+  git init --bare
+</code></pre></li>
+</ul>
+<h2 id="四、配置"><a href="#四、配置" class="headerlink" title="四、配置"></a>四、配置</h2><ul>
+<li><p>修改配置</p>
+<p>可参考 <a href="https://gogs.io/docs/advanced/configuration_cheat_sheet" target="_blank" rel="noopener">https://gogs.io/docs/advanced/configuration_cheat_sheet</a></p>
+<pre><code>vi /home/git/gogs/custom/conf/app.ini
 
-#拷贝原来Git版本库
-cp -rf /home/git/repositories/bm_radio.git /home/git/gitlab-repositories/repository-import-other/other/
-
-#修改权限
-chown -R git:git  /home/git/gitlab-repositories/repository-import-other
-
-#导入代码
-gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-import-other&#39;]
-</code></pre><p>​    </p>
+#关闭用户注册
+DISABLE_REGISTRATION = true
+SHOW_REGISTRATION_BUTTON = false
+</code></pre><p>​</p>
+</li>
+</ul>
 
       
     </div>
@@ -510,9 +474,7 @@ gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-im
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" rel="tag"># Git</a>
-          
-            <a href="/tags/GitService/" rel="tag"># GitService</a>
+            <a href="/tags/Gogs/" rel="tag"># Gogs</a>
           
         </div>
       
@@ -521,8 +483,8 @@ gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-im
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/开发/Java/RabbitMq/rabbitmq使用/" rel="next" title="Rabbitmq使用">
-                <i class="fa fa-chevron-left"></i> Rabbitmq使用
+              <a href="/Git/GitLab安装笔记/" rel="next" title="GitLab安装维护笔记">
+                <i class="fa fa-chevron-left"></i> GitLab安装维护笔记
               </a>
             
           </div>
@@ -530,10 +492,6 @@ gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-im
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/开发/Git/Gogs安装笔记/" rel="prev" title="Gogs安装笔记">
-                Gogs安装笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -612,7 +570,7 @@ gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-im
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -621,7 +579,7 @@ gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-im
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -656,7 +614,7 @@ gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-im
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、参考文档"><span class="nav-number">1.</span> <span class="nav-text">一、参考文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、安装"><span class="nav-number">2.</span> <span class="nav-text">二、安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、配置"><span class="nav-number">3.</span> <span class="nav-text">三、配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、导入项目"><span class="nav-number">4.</span> <span class="nav-text">四、导入项目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、下载安装包"><span class="nav-number">1.</span> <span class="nav-text">一、下载安装包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、启动、配置服务"><span class="nav-number">2.</span> <span class="nav-text">二、启动、配置服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、-导入已有git仓库"><span class="nav-number">3.</span> <span class="nav-text">三、 导入已有git仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、配置"><span class="nav-number">4.</span> <span class="nav-text">四、配置</span></a></li></ol></div>
             
 
           </div>
