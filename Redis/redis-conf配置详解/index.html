@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="使用redis遇到的问题和解决方法外网无法访问修改配置文件bind项,加入外网IP bind 192.168.1.114 127.0.0.1 保护策略设置出错错误代码 (error) DENIED Redis is running in protected mode because protected mode is enabled, no bind address was specified,">
+<meta name="description" content="使用redis遇到的问题和解决方法外网无法访问修改配置文件bind项,加入外网IP bind 192.168.1.114 127.0.0.1">
 <meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis.conf配置详解">
 <meta property="og:url" content="http://yoursite.com/Redis/redis-conf配置详解/index.html">
 <meta property="og:site_name" content="谭小凯学习笔记">
-<meta property="og:description" content="使用redis遇到的问题和解决方法外网无法访问修改配置文件bind项,加入外网IP bind 192.168.1.114 127.0.0.1 保护策略设置出错错误代码 (error) DENIED Redis is running in protected mode because protected mode is enabled, no bind address was specified,">
+<meta property="og:description" content="使用redis遇到的问题和解决方法外网无法访问修改配置文件bind项,加入外网IP bind 192.168.1.114 127.0.0.1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-16T03:47:10.605Z">
+<meta property="og:updated_time" content="2018-03-16T03:53:10.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis.conf配置详解">
-<meta name="twitter:description" content="使用redis遇到的问题和解决方法外网无法访问修改配置文件bind项,加入外网IP bind 192.168.1.114 127.0.0.1 保护策略设置出错错误代码 (error) DENIED Redis is running in protected mode because protected mode is enabled, no bind address was specified,">
+<meta name="twitter:description" content="使用redis遇到的问题和解决方法外网无法访问修改配置文件bind项,加入外网IP bind 192.168.1.114 127.0.0.1">
 
 
 
@@ -349,10 +349,10 @@
       
 
       
-        <a id="more"></a>
-<h2 id="使用redis遇到的问题和解决方法"><a href="#使用redis遇到的问题和解决方法" class="headerlink" title="使用redis遇到的问题和解决方法"></a>使用redis遇到的问题和解决方法</h2><h3 id="外网无法访问"><a href="#外网无法访问" class="headerlink" title="外网无法访问"></a>外网无法访问</h3><p>修改配置文件bind项,加入外网IP</p>
+        <h2 id="使用redis遇到的问题和解决方法"><a href="#使用redis遇到的问题和解决方法" class="headerlink" title="使用redis遇到的问题和解决方法"></a>使用redis遇到的问题和解决方法</h2><h3 id="外网无法访问"><a href="#外网无法访问" class="headerlink" title="外网无法访问"></a>外网无法访问</h3><p>修改配置文件bind项,加入外网IP</p>
 <pre><code>bind 192.168.1.114 127.0.0.1
-</code></pre><h3 id="保护策略设置出错"><a href="#保护策略设置出错" class="headerlink" title="保护策略设置出错"></a>保护策略设置出错</h3><p>错误代码</p>
+</code></pre><a id="more"></a>
+<h3 id="保护策略设置出错"><a href="#保护策略设置出错" class="headerlink" title="保护策略设置出错"></a>保护策略设置出错</h3><p>错误代码</p>
 <pre><code>(error) DENIED Redis is running in protected mode because protected mode is enabled, no bind address was specified, no authentication password is requested to clients. 
 </code></pre><p>错误原因</p>
 <pre><code>Redis protected-mode 是3.2 之后加入的新特性，在Redis.conf的注释中，我们可以了解到，他的具体作用和启用条件链接redis 时只能通过本地localhost (127.0.0.1）这个来链接，而不能用网络ip(192.168..)这个链接，问题然如果用网络ip 链接会报错。是说处于保护模式，只能本地链接。
@@ -1262,7 +1262,7 @@ aof-rewrite-incremental-fsync yes
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
