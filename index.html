@@ -707,6 +707,167 @@ rpm -ihv socat-1.7.2.3-1.el6.x86_64.rpm
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/维护/Git/Git-SSH-Key-生成步骤/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="谭小凯">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="谭小凯学习笔记">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="谭小凯学习笔记" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/维护/Git/Git-SSH-Key-生成步骤/" itemprop="url">
+                  Git SSH Key 生成步骤
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T11:52:24+08:00">
+                2017-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/维护/" itemprop="url" rel="index">
+                    <span itemprop="name">维护</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/维护/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一-、设置Git的user-name和email"><a href="#一-、设置Git的user-name和email" class="headerlink" title="一 、设置Git的user name和email"></a>一 、设置Git的user name和email</h3><pre><code>git config --global user.name &quot;username&quot;
+git config --global user.email &quot;email@gmail.com&quot;
+</code></pre><h3 id="二、生成SSH密钥过程"><a href="#二、生成SSH密钥过程" class="headerlink" title="二、生成SSH密钥过程"></a>二、生成SSH密钥过程</h3><h4 id="1-查看是否已经有了ssh密钥-如果没有密钥则不会有此文件夹，有则备份删除"><a href="#1-查看是否已经有了ssh密钥-如果没有密钥则不会有此文件夹，有则备份删除" class="headerlink" title="1.查看是否已经有了ssh密钥, 如果没有密钥则不会有此文件夹，有则备份删除"></a>1.查看是否已经有了ssh密钥, 如果没有密钥则不会有此文件夹，有则备份删除</h4><pre><code>cd ~/.ssh
+</code></pre><h4 id="2-生存密钥"><a href="#2-生存密钥" class="headerlink" title="2.生存密钥"></a>2.生存密钥</h4><pre><code>$ ssh-keygen -t rsa -C &quot;hostname&quot;
+</code></pre><p>按3个回车，密码为空。<br>最后得到了两个文件：id_rsa和id_rsa.pub</p>
+<h4 id="3-添加密钥到ssh"><a href="#3-添加密钥到ssh" class="headerlink" title="3.添加密钥到ssh"></a>3.添加密钥到ssh</h4><pre><code>ssh-add 文件名
+ssh-add ~/.ssh/id_rsa.pub
+</code></pre><p>需要之前输入密码。</p>
+<h4 id="4-添加ssh密钥，这要添加的是“id-rsa-pub”里面的公钥。"><a href="#4-添加ssh密钥，这要添加的是“id-rsa-pub”里面的公钥。" class="headerlink" title="4.添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥。"></a>4.添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥。</h4><pre><code>cat ~/.ssh/id_rsa.pub
+</code></pre><h4 id="5-测试："><a href="#5-测试：" class="headerlink" title="5.测试："></a>5.测试：</h4><pre><code>ssh git@192.168.1.114.com
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/维护/Jenkins/Jenkins安装与配置/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1638,162 +1799,6 @@ rpm -ihv socat-1.7.2.3-1.el6.x86_64.rpm
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Spring/如何返回方法的参数名称/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="谭小凯">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="谭小凯学习笔记">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="谭小凯学习笔记" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/开发/Spring/如何返回方法的参数名称/" itemprop="url">
-                  如何返回方法的参数名称
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-28T17:30:04+08:00">
-                2016-12-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/" itemprop="url" rel="index">
-                    <span itemprop="name">开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/Spring/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这两天接手一个新项目的代码，需要对整个项目的Spring框架从3.2.1 升级到4.2.9。因为涉及底层改动比较大，需要对整个服务进行全面的测试。我想做一个测试功能，把服务所有能请求的url，对两个不同版本的输出进行比对来验证升级是否没有问题。在反射MVC的所有Mapping的请求时，发现只能反射方法中的参数类型，而不能获取参数的名称。在网上查了些资料终于找到了解决的方法。</p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/开发/Spring/如何返回方法的参数名称/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1841,7 +1846,7 @@ rpm -ihv socat-1.7.2.3-1.el6.x86_64.rpm
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1850,7 +1855,7 @@ rpm -ihv socat-1.7.2.3-1.el6.x86_64.rpm
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1859,7 +1864,7 @@ rpm -ihv socat-1.7.2.3-1.el6.x86_64.rpm
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
