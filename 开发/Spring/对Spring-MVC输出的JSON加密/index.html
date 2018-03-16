@@ -1,0 +1,1071 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.useso.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java,Spring,Des加密," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="由于项目有安全要求，需要对接口返回的JOSN数据加密输出。这里改进MappingJackson2HttpMessageConverter，在配置 message-converters 进行处理。">
+<meta name="keywords" content="Java,Spring,Des加密">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对Spring MVC输出的JSON加密">
+<meta property="og:url" content="http://yoursite.com/开发/Spring/对Spring-MVC输出的JSON加密/index.html">
+<meta property="og:site_name" content="谭小凯学习笔记">
+<meta property="og:description" content="由于项目有安全要求，需要对接口返回的JOSN数据加密输出。这里改进MappingJackson2HttpMessageConverter，在配置 message-converters 进行处理。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-16T04:06:10.739Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对Spring MVC输出的JSON加密">
+<meta name="twitter:description" content="由于项目有安全要求，需要对接口返回的JOSN数据加密输出。这里改进MappingJackson2HttpMessageConverter，在配置 message-converters 进行处理。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/开发/Spring/对Spring-MVC输出的JSON加密/"/>
+
+
+
+
+
+  <title> 对Spring MVC输出的JSON加密 | 谭小凯学习笔记 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">谭小凯学习笔记</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">人生如茶,静心以对。时光如水,沉淀方澈</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Spring/对Spring-MVC输出的JSON加密/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="谭小凯">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="谭小凯学习笔记">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="谭小凯学习笔记" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                对Spring MVC输出的JSON加密
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-28T17:31:09+08:00">
+                2016-12-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发/" itemprop="url" rel="index">
+                    <span itemprop="name">开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>由于项目有安全要求，需要对接口返回的JOSN数据加密输出。这里改进MappingJackson2HttpMessageConverter，在配置 message-converters 进行处理。</p>
+<a id="more"></a>
+<h3 id="1-使用Spring版本-4-2-9"><a href="#1-使用Spring版本-4-2-9" class="headerlink" title="1. 使用Spring版本 4.2.9"></a>1. 使用Spring版本 4.2.9</h3><pre><code>&lt;dependency&gt;  
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;  
+    &lt;artifactId&gt;spring-core&lt;/artifactId&gt;  
+    &lt;version&gt;4.2.9.RELEASE&lt;/version&gt;  
+&lt;/dependency&gt;  
+&lt;dependency&gt;  
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;  
+    &lt;artifactId&gt;spring-beans&lt;/artifactId&gt;  
+    &lt;version&gt;4.2.9.RELEASE&lt;/version&gt;  
+&lt;/dependency&gt;  
+&lt;dependency&gt;  
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;  
+    &lt;artifactId&gt;spring-web&lt;/artifactId&gt;   
+    &lt;version&gt;4.2.9.RELEASE&lt;/version&gt;  
+&lt;/dependency&gt;  
+&lt;dependency&gt;  
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;  
+    &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;  
+    &lt;version&gt;4.2.9.RELEASE&lt;/version&gt;  
+&lt;/dependency&gt;  
+&lt;dependency&gt;  
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;  
+    &lt;artifactId&gt;spring-context&lt;/artifactId&gt;  
+    &lt;version&gt;4.2.9.RELEASE&lt;/version&gt;  
+&lt;/dependency&gt;  
+&lt;dependency&gt;  
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;  
+    &lt;artifactId&gt;spring-context-support&lt;/artifactId&gt;  
+    &lt;version&gt;4.2.9.RELEASE&lt;/version&gt;  
+&lt;/dependency&gt;  
+&lt;dependency&gt;  
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;  
+    &lt;artifactId&gt;spring-aspects&lt;/artifactId&gt;  
+    &lt;version&gt;4.2.9.RELEASE&lt;/version&gt;  
+&lt;/dependency&gt;  
+&lt;dependency&gt;  
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;  
+    &lt;artifactId&gt;spring-aop&lt;/artifactId&gt;  
+    &lt;version&gt;4.2.9.RELEASE&lt;/version&gt;  
+&lt;/dependency&gt;  
+&lt;dependency&gt;  
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;  
+    &lt;artifactId&gt;spring-tx&lt;/artifactId&gt;  
+    &lt;version&gt;4.2.9.RELEASE&lt;/version&gt;  
+&lt;/dependency&gt;  
+&lt;dependency&gt;  
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;  
+    &lt;artifactId&gt;spring-test&lt;/artifactId&gt;  
+    &lt;version&gt;4.2.9.RELEASE&lt;/version&gt;  
+&lt;/dependency&gt;  
+
+&lt;!-- Spring For JSON --&gt;
+&lt;dependency&gt;   
+    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;    
+    &lt;artifactId&gt;jackson-core&lt;/artifactId&gt;    
+    &lt;version&gt;2.5.4&lt;/version&gt;    
+&lt;/dependency&gt;    
+&lt;dependency&gt;  
+    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;    
+    &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;    
+    &lt;version&gt;2.5.4&lt;/version&gt;    
+&lt;/dependency&gt;    
+&lt;dependency&gt;  
+    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;    
+    &lt;artifactId&gt;jackson-annotations&lt;/artifactId&gt;    
+    &lt;version&gt;2.5.4&lt;/version&gt;    
+&lt;/dependency&gt;  
+&lt;dependency&gt;  
+    &lt;groupId&gt;org.codehaus.jackson&lt;/groupId&gt;  
+    &lt;artifactId&gt;jackson-core-asl&lt;/artifactId&gt;  
+    &lt;version&gt;1.9.13&lt;/version&gt;  
+&lt;/dependency&gt;  
+&lt;dependency&gt;  
+    &lt;groupId&gt;org.codehaus.jackson&lt;/groupId&gt;  
+    &lt;artifactId&gt;jackson-mapper-asl&lt;/artifactId&gt;  
+    &lt;version&gt;1.9.13&lt;/version&gt;  
+&lt;/dependency&gt;  
+</code></pre><h3 id="2-拷贝Spring源码中MappingJackson2HttpMessageConverter-java进行修改"><a href="#2-拷贝Spring源码中MappingJackson2HttpMessageConverter-java进行修改" class="headerlink" title="2. 拷贝Spring源码中MappingJackson2HttpMessageConverter.java进行修改"></a>2. 拷贝Spring源码中MappingJackson2HttpMessageConverter.java进行修改</h3><pre><code>/*
+ * Copyright 2002-2016 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.my0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package my.aop;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpOutputMessage;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageNotWritableException;
+import org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.http.converter.json.MappingJacksonValue;
+import org.springframework.util.ClassUtils;
+import org.springframework.util.TypeUtils;
+
+import my.untils.Des;
+import com.fasterxml.jackson.core.JsonEncoding;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.PrettyPrinter;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+
+/**
+ * Implementation of {@link org.springframework.http.converter.HttpMessageConverter} that can read and
+ * write JSON using &lt;a href=&quot;http://wiki.fasterxml.com/JacksonHome&quot;&gt;Jackson 2.x&#39;s&lt;/a&gt; {@link ObjectMapper}.
+ *
+ * &lt;p&gt;This converter can be used to bind to typed beans, or untyped {@code HashMap} instances.
+ *
+ * &lt;p&gt;By default, this converter supports {@code application/json} and {@code application/*+json}
+ * with {@code UTF-8} character set. This can be overridden by setting the
+ * {@link #setSupportedMediaTypes supportedMediaTypes} property.
+ *
+ * &lt;p&gt;The default constructor uses the default configuration provided by {@link Jackson2ObjectMapperBuilder}.
+ *
+ * &lt;p&gt;Compatible with Jackson 2.1 to 2.6.
+ *
+ * @author Arjen Poutsma
+ * @author Keith Donald
+ * @author Rossen Stoyanchev
+ * @author Juergen Hoeller
+ * @author Sebastien Deleuze
+ * @since 3.1.2
+ */
+public class MappingJackson2HttpMessageConverter extends AbstractJackson2HttpMessageConverter {
+
+    private String jsonPrefix;
+
+    private static final boolean jackson26Available = ClassUtils.hasMethod(ObjectMapper.class,
+            &quot;setDefaultPrettyPrinter&quot;, PrettyPrinter.class);
+
+    //####################################
+    //TODO: Modified By Tankai 
+    @Autowired  
+    private  HttpServletRequest request;
+    //####################################
+
+    /**
+     * Construct a new {@link MappingJackson2HttpMessageConverter} using default configuration
+     * provided by {@link Jackson2ObjectMapperBuilder}.
+     */
+    public MappingJackson2HttpMessageConverter() {
+        this(Jackson2ObjectMapperBuilder.json().build());
+    }
+
+    /**
+     * Construct a new {@link MappingJackson2HttpMessageConverter} with a custom {@link ObjectMapper}.
+     * You can use {@link Jackson2ObjectMapperBuilder} to build it easily.
+     * @see Jackson2ObjectMapperBuilder#json()
+     */
+    public MappingJackson2HttpMessageConverter(ObjectMapper objectMapper) {
+        super(objectMapper, MediaType.APPLICATION_JSON_UTF8,
+                new MediaType(&quot;application&quot;, &quot;*+json&quot;, DEFAULT_CHARSET));
+    }
+
+    /**
+     * Specify a custom prefix to use for this view&#39;s JSON output.
+     * Default is none.
+     * @see #setPrefixJson
+     */
+    public void setJsonPrefix(String jsonPrefix) {
+        this.jsonPrefix = jsonPrefix;
+    }
+
+    /**
+     * Indicate whether the JSON output by this view should be prefixed with &quot;)]}&#39;, &quot;. Default is false.
+     * &lt;p&gt;Prefixing the JSON string in this manner is used to help prevent JSON Hijacking.
+     * The prefix renders the string syntactically invalid as a script so that it cannot be hijacked.
+     * This prefix should be stripped before parsing the string as JSON.
+     * @see #setJsonPrefix
+     */
+    public void setPrefixJson(boolean prefixJson) {
+        this.jsonPrefix = (prefixJson ? &quot;)]}&#39;, &quot; : null);
+    }
+
+
+    @Override
+    protected void writePrefix(JsonGenerator generator, Object object) throws IOException {
+        if (this.jsonPrefix != null) {
+            generator.writeRaw(this.jsonPrefix);
+        }
+        String jsonpFunction =
+                (object instanceof MappingJacksonValue ? ((MappingJacksonValue) object).getJsonpFunction() : null);
+        if (jsonpFunction != null) {
+            generator.writeRaw(&quot;/**/&quot;);
+            generator.writeRaw(jsonpFunction + &quot;(&quot;);
+        }
+    }
+
+    @Override
+    protected void writeSuffix(JsonGenerator generator, Object object) throws IOException {
+        String jsonpFunction =
+                (object instanceof MappingJacksonValue ? ((MappingJacksonValue) object).getJsonpFunction() : null);
+        if (jsonpFunction != null) {
+            generator.writeRaw(&quot;);&quot;);
+        }
+    }
+
+    //####################################
+    //TODO: Modified By Tankai
+    //判断是否开启加密模式
+    private boolean desMode(){
+        //默认开启
+        return true;
+    }
+
+    // 验证返回的MediaType是否需要加密
+    private boolean verifyMediaType(MediaType type){
+
+        if(type == null || StringUtils.isBlank(type.getSubtype())){
+            return false;
+        }
+
+        //对 application/json 返回进行加密
+        if(type.getSubtype().equals(MediaType.APPLICATION_JSON.getSubtype())){ 
+            return true;
+        }
+
+        //对 text/plain 返回进行加密
+        if(type.equals(MediaType.TEXT_PLAIN)){ 
+            return true;
+        }
+
+        return false;
+    }
+
+    // 验证请求的url是否需要加密
+    private boolean verifyRequestUrl(){
+
+        String url=request.getRequestURI();
+
+        if(&quot;/remoteview/daily/word&quot;.indexOf(url)&gt;-1){
+            //这些url不加密
+            return false;
+        }
+
+        return true;
+    }
+    //####################################
+
+    @Override
+    @SuppressWarnings(&quot;deprecation&quot;)
+    protected void writeInternal(Object object, Type type, HttpOutputMessage outputMessage)
+            throws IOException, HttpMessageNotWritableException {
+
+        JsonEncoding encoding = getJsonEncoding(outputMessage.getHeaders().getContentType());
+        JsonGenerator generator = this.objectMapper.getFactory().createGenerator(outputMessage.getBody(), encoding);
+        try {
+            writePrefix(generator, object);
+
+            Class&lt;?&gt; serializationView = null;
+            FilterProvider filters = null;
+            Object value = object;
+            JavaType javaType = null;
+            if (object instanceof MappingJacksonValue) {
+                MappingJacksonValue container = (MappingJacksonValue) object;
+                value = container.getValue();
+                serializationView = container.getSerializationView();
+                filters = container.getFilters();
+            }
+            if (jackson26Available &amp;&amp; type != null &amp;&amp; value != null &amp;&amp; TypeUtils.isAssignable(type, value.getClass())) {
+                javaType = getJavaType(type, null);
+            }
+            ObjectWriter objectWriter;
+            if (serializationView != null) {
+                objectWriter = this.objectMapper.writerWithView(serializationView);
+            }
+            else if (filters != null) {
+                objectWriter = this.objectMapper.writer(filters);
+            }
+            else {
+                objectWriter = this.objectMapper.writer();
+            }
+            if (javaType != null &amp;&amp; javaType.isContainerType()) {
+                objectWriter = objectWriter.withType(javaType);
+            }
+
+            //####################################
+            //TODO: Modified By Tankai
+            if(desMode() &amp;&amp; verifyRequestUrl() &amp;&amp; verifyMediaType(outputMessage.getHeaders().getContentType())){
+                try {
+                    String encodeStr = Des.encode(objectMapper.writeValueAsString(object));
+                    this.objectMapper.writeValue(generator, encodeStr);
+                } catch (Exception e) {
+                    throw new HttpMessageNotWritableException(&quot;Could not Des Encode content: &quot; + e.getMessage(), e);
+                }
+            }else{
+                objectWriter.writeValue(generator, value);
+            }
+            //####################################
+
+            //####################################
+            //源文件代码
+            //objectWriter.writeValue(generator, value);
+            //####################################
+
+            writeSuffix(generator, object);
+            generator.flush();
+        }
+        catch (JsonProcessingException ex) {
+            throw new HttpMessageNotWritableException(&quot;Could not write content: &quot; + ex.getMessage(), ex);
+        }
+    }
+}
+
+</code></pre><h3 id="3-配置spring-mvc配置文件，添加自己定义的messageConverters"><a href="#3-配置spring-mvc配置文件，添加自己定义的messageConverters" class="headerlink" title="3. 配置spring mvc配置文件，添加自己定义的messageConverters"></a>3. 配置spring mvc配置文件，添加自己定义的messageConverters</h3><pre><code>&lt;mvc:annotation-driven&gt;
+    &lt;mvc:message-converters&gt;
+        &lt;bean class=&quot;my.aop.MappingJackson2HttpMessageConverter&quot; /&gt;
+    &lt;/mvc:message-converters&gt;
+&lt;/mvc:annotation-driven&gt;
+</code></pre><h3 id="4-DES加密解密工具"><a href="#4-DES加密解密工具" class="headerlink" title="4.DES加密解密工具"></a>4.DES加密解密工具</h3><pre><code>
+package my.untils;
+
+import java.security.Key;
+
+import javax.crypto.Cipher;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESedeKeySpec;
+import javax.crypto.spec.IvParameterSpec;
+
+
+public class Des {                           
+    private final static String secretKey = &quot;abcdefghijklmn&quot;;  
+    // 向量  
+    private final static String iv = &quot;01234567&quot;;  
+    // 加解密统一使用的编码方式  
+    private final static String encoding = &quot;utf-8&quot;;  
+
+    /** 
+     * 3DES加密 
+     *  
+     * @param plainText 普通文本 
+     * @return 
+     * @throws Exception  
+     */  
+    public static String encode(String plainText) throws Exception {  
+        Key deskey = null;  
+        DESedeKeySpec spec = new DESedeKeySpec(secretKey.getBytes());  
+        SecretKeyFactory keyfactory = SecretKeyFactory.getInstance(&quot;desede&quot;);  
+        deskey = keyfactory.generateSecret(spec);  
+
+        Cipher cipher = Cipher.getInstance(&quot;desede/CBC/PKCS5Padding&quot;);  
+        IvParameterSpec ips = new IvParameterSpec(iv.getBytes());  
+        cipher.init(Cipher.ENCRYPT_MODE, deskey, ips);  
+        byte[] encryptData = cipher.doFinal(plainText.getBytes(encoding));  
+        return com.sun.org.apache.xml.internal.security.utils.Base64.encode(encryptData);  
+    }  
+
+    /** 
+     * 3DES解密 
+     *  
+     * @param encryptText 加密文本 
+     * @return 
+     * @throws Exception 
+     */  
+    public static String decode(String encryptText) throws Exception {  
+        Key deskey = null;  
+        DESedeKeySpec spec = new DESedeKeySpec(secretKey.getBytes());  
+        SecretKeyFactory keyfactory = SecretKeyFactory.getInstance(&quot;desede&quot;);  
+        deskey = keyfactory.generateSecret(spec);  
+        Cipher cipher = Cipher.getInstance(&quot;desede/CBC/PKCS5Padding&quot;);  
+        IvParameterSpec ips = new IvParameterSpec(iv.getBytes());  
+        cipher.init(Cipher.DECRYPT_MODE, deskey, ips);  
+
+        byte[] decryptData = cipher.doFinal(com.sun.org.apache.xml.internal.security.utils.Base64.decode(encryptText));  
+
+        return new String(decryptData, encoding);  
+    }
+}  
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+            <a href="/tags/Des加密/" rel="tag"># Des加密</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/开发/Spring/如何返回方法的参数名称/" rel="next" title="如何返回方法的参数名称">
+                <i class="fa fa-chevron-left"></i> 如何返回方法的参数名称
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/开发/Redis/Spring-Redis-Mybatis整合之二级缓存方式/" rel="prev" title="Spring+Redis+Mybatis整合之二级缓存方式">
+                Spring+Redis+Mybatis整合之二级缓存方式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="谭小凯" />
+          <p class="site-author-name" itemprop="name">谭小凯</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-使用Spring版本-4-2-9"><span class="nav-number">1.</span> <span class="nav-text">1. 使用Spring版本 4.2.9</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-拷贝Spring源码中MappingJackson2HttpMessageConverter-java进行修改"><span class="nav-number">2.</span> <span class="nav-text">2. 拷贝Spring源码中MappingJackson2HttpMessageConverter.java进行修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-配置spring-mvc配置文件，添加自己定义的messageConverters"><span class="nav-number">3.</span> <span class="nav-text">3. 配置spring mvc配置文件，添加自己定义的messageConverters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-DES加密解密工具"><span class="nav-number">4.</span> <span class="nav-text">4.DES加密解密工具</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">谭小凯</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
