@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="连接操作相关的命令默认直接连接  远程连接-h 192.168.1.20 -p 6379ping：测试连接是否存活如果正常会返回pongecho：打印select：切换到指定的数据库，数据库索引号 index 用数字值指定，以 0 作为起始索引值quit：关闭连接（connection）auth：简单密码认证   服务端相关命令time：返回当前服务器时间client list: 返回所有连接到服">
+<meta name="description" content="连接操作相关的命令默认直接连接  远程连接-h 192.168.1.20 -p 6379ping：测试连接是否存活如果正常会返回pongecho：打印select：切换到指定的数据库，数据库索引号 index 用数字值指定，以 0 作为起始索引值quit：关闭连接（connection）auth：简单密码认证">
 <meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis-cli命令总结">
-<meta property="og:url" content="http://yoursite.com/开发/Redis/Redis-cli命令总结/index.html">
+<meta property="og:url" content="http://yoursite.com/Redis/Redis-cli命令总结/index.html">
 <meta property="og:site_name" content="谭小凯学习笔记">
-<meta property="og:description" content="连接操作相关的命令默认直接连接  远程连接-h 192.168.1.20 -p 6379ping：测试连接是否存活如果正常会返回pongecho：打印select：切换到指定的数据库，数据库索引号 index 用数字值指定，以 0 作为起始索引值quit：关闭连接（connection）auth：简单密码认证   服务端相关命令time：返回当前服务器时间client list: 返回所有连接到服">
+<meta property="og:description" content="连接操作相关的命令默认直接连接  远程连接-h 192.168.1.20 -p 6379ping：测试连接是否存活如果正常会返回pongecho：打印select：切换到指定的数据库，数据库索引号 index 用数字值指定，以 0 作为起始索引值quit：关闭连接（connection）auth：简单密码认证">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-15T06:08:10.987Z">
+<meta property="og:updated_time" content="2018-03-16T03:47:10.604Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis-cli命令总结">
-<meta name="twitter:description" content="连接操作相关的命令默认直接连接  远程连接-h 192.168.1.20 -p 6379ping：测试连接是否存活如果正常会返回pongecho：打印select：切换到指定的数据库，数据库索引号 index 用数字值指定，以 0 作为起始索引值quit：关闭连接（connection）auth：简单密码认证   服务端相关命令time：返回当前服务器时间client list: 返回所有连接到服">
+<meta name="twitter:description" content="连接操作相关的命令默认直接连接  远程连接-h 192.168.1.20 -p 6379ping：测试连接是否存活如果正常会返回pongecho：打印select：切换到指定的数据库，数据库索引号 index 用数字值指定，以 0 作为起始索引值quit：关闭连接（connection）auth：简单密码认证">
 
 
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/开发/Redis/Redis-cli命令总结/"/>
+  <link rel="canonical" href="http://yoursite.com/Redis/Redis-cli命令总结/"/>
 
 
 
@@ -252,7 +252,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Redis/Redis-cli命令总结/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/Redis/Redis-cli命令总结/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="谭小凯">
@@ -314,18 +314,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/" itemprop="url" rel="index">
-                    <span itemprop="name">开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/Redis/" itemprop="url" rel="index">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
                     <span itemprop="name">Redis</span>
                   </a>
                 </span>
@@ -361,6 +350,7 @@
 
       
         <h3 id="连接操作相关的命令"><a href="#连接操作相关的命令" class="headerlink" title="连接操作相关的命令"></a>连接操作相关的命令</h3><p>默认直接连接  远程连接-h 192.168.1.20 -p 6379<br>ping：测试连接是否存活如果正常会返回pong<br>echo：打印<br>select：切换到指定的数据库，数据库索引号 index 用数字值指定，以 0 作为起始索引值<br>quit：关闭连接（connection）<br>auth：简单密码认证  </p>
+<a id="more"></a>
 <h3 id="服务端相关命令"><a href="#服务端相关命令" class="headerlink" title="服务端相关命令"></a>服务端相关命令</h3><p>time：返回当前服务器时间<br>client list: 返回所有连接到服务器的客户端信息和统计数据  参见[<a href="http://redisdoc.com/server/client_list.html]" target="_blank" rel="noopener">http://redisdoc.com/server/client_list.html]</a><br>client kill ip:port：关闭地址为 ip:port 的客户端<br>save：将数据同步保存到磁盘<br>bgsave：将数据异步保存到磁盘<br>lastsave：返回上次成功将数据保存到磁盘的Unix时戳<br>shundown：将数据同步保存到磁盘，然后关闭服务<br>info：提供服务器的信息和统计<br>config resetstat：重置info命令中的某些统计数据<br>config get：获取配置文件信息<br>config set：动态地调整 Redis 服务器的配置(configuration)而无须重启，可以修改的配置参数可以使用命令 CONFIG GET * 来列出<br>config rewrite：Redis 服务器时所指定的 redis.conf 文件进行改写<br>monitor：实时转储收到的请求<br>slaveof：改变复制策略设置  </p>
 <h3 id="发布订阅相关命令"><a href="#发布订阅相关命令" class="headerlink" title="发布订阅相关命令"></a>发布订阅相关命令</h3><p>psubscribe：订阅一个或多个符合给定模式的频道 例如psubscribe news.<em> tweet.</em><br>publish：将信息 message 发送到指定的频道 channel 例如publish msg “good morning”<br>pubsub channels：列出当前的活跃频道 例如PUBSUB CHANNELS news.i*<br>pubsub numsub：返回给定频道的订阅者数量 例如PUBSUB NUMSUB news.it news.internet news.sport news.music<br>pubsub numpat：返回客户端订阅的所有模式的数量总和<br>punsubscribe：指示客户端退订所有给定模式。<br>subscribe：订阅给定的一个或多个频道的信息。例如 subscribe msg chat_room<br>unsubscribe：指示客户端退订给定的频道。  </p>
 <h3 id="对KEY操作的命令"><a href="#对KEY操作的命令" class="headerlink" title="对KEY操作的命令"></a>对KEY操作的命令</h3><p>exists(key)：确认一个key是否存在<br>del(key)：删除一个key<br>type(key)：返回值的类型<br>keys(pattern)：返回满足给定pattern的所有key<br>randomkey：随机返回key空间的一个<br>keyrename(oldname, newname)：重命名key<br>dbsize：返回当前数据库中key的数目<br>expire：设定一个key的活动时间（s）<br>ttl：获得一个key的活动时间<br>move(key, dbindex)：移动当前数据库中的key到dbindex数据库<br>flushdb：删除当前选择数据库中的所有key<br>flushall：删除所有数据库中的所有key  </p>
@@ -491,7 +481,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
