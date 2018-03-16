@@ -361,7 +361,15 @@
 
       
         
-          <h2 id="rabbitmqadmin使用"><a href="#rabbitmqadmin使用" class="headerlink" title="rabbitmqadmin使用"></a>rabbitmqadmin使用</h2>
+          <h2 id="rabbitmqadmin使用"><a href="#rabbitmqadmin使用" class="headerlink" title="rabbitmqadmin使用"></a>rabbitmqadmin使用</h2><h3 id="配置rabbitmqadmin"><a href="#配置rabbitmqadmin" class="headerlink" title="配置rabbitmqadmin"></a>配置rabbitmqadmin</h3><pre><code>   #查找位置
+   find /var/lib/rabbitmq/ -name &quot;rabbitmqadmin&quot;
+
+   #复制，路径更加查找的结果来
+   cp -a /var/lib/rabbitmq/rabbit@*-plugins-expand/.../rabbitmqadmin /usr/bin/rabbitmqadmin   
+
+   #添加执行权限
+   chmod +x /usr/bin/rabbitmqadmin
+</code></pre>
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/开发/RabbitMq/rabbitmq常用操作/#more" rel="contents">

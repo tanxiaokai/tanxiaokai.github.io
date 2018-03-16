@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="rabbitmqadmin使用">
+<meta name="description" content="rabbitmqadmin使用配置rabbitmqadmin   #查找位置    find /var/lib/rabbitmq/ -name &amp;quot;rabbitmqadmin&amp;quot;     #复制，路径更加查找的结果来    cp -a /var/lib/rabbitmq/rabbit@*-plugins-expand/.../rabbitmqadmin /usr/bin/rabbi">
 <meta name="keywords" content="RabbitMq">
 <meta property="og:type" content="article">
 <meta property="og:title" content="rabbitmq常用操作">
 <meta property="og:url" content="http://yoursite.com/开发/RabbitMq/rabbitmq常用操作/index.html">
 <meta property="og:site_name" content="谭小凯学习笔记">
-<meta property="og:description" content="rabbitmqadmin使用">
+<meta property="og:description" content="rabbitmqadmin使用配置rabbitmqadmin   #查找位置    find /var/lib/rabbitmq/ -name &amp;quot;rabbitmqadmin&amp;quot;     #复制，路径更加查找的结果来    cp -a /var/lib/rabbitmq/rabbit@*-plugins-expand/.../rabbitmqadmin /usr/bin/rabbi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-16T07:41:06.405Z">
+<meta property="og:updated_time" content="2018-03-16T07:43:06.389Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rabbitmq常用操作">
-<meta name="twitter:description" content="rabbitmqadmin使用">
+<meta name="twitter:description" content="rabbitmqadmin使用配置rabbitmqadmin   #查找位置    find /var/lib/rabbitmq/ -name &amp;quot;rabbitmqadmin&amp;quot;     #复制，路径更加查找的结果来    cp -a /var/lib/rabbitmq/rabbit@*-plugins-expand/.../rabbitmqadmin /usr/bin/rabbi">
 
 
 
@@ -360,95 +360,90 @@
       
 
       
-        <h2 id="rabbitmqadmin使用"><a href="#rabbitmqadmin使用" class="headerlink" title="rabbitmqadmin使用"></a>rabbitmqadmin使用</h2><a id="more"></a>
-<ol>
-<li><p>配置rabbitmqadmin</p>
-<pre><code>#查找位置
-find /var/lib/rabbitmq/ -name &quot;rabbitmqadmin&quot;
+        <h2 id="rabbitmqadmin使用"><a href="#rabbitmqadmin使用" class="headerlink" title="rabbitmqadmin使用"></a>rabbitmqadmin使用</h2><h3 id="配置rabbitmqadmin"><a href="#配置rabbitmqadmin" class="headerlink" title="配置rabbitmqadmin"></a>配置rabbitmqadmin</h3><pre><code>   #查找位置
+   find /var/lib/rabbitmq/ -name &quot;rabbitmqadmin&quot;
 
-#复制，路径更加查找的结果来
-cp -a /var/lib/rabbitmq/rabbit@*-plugins-expand/.../rabbitmqadmin /usr/bin/rabbitmqadmin   
+   #复制，路径更加查找的结果来
+   cp -a /var/lib/rabbitmq/rabbit@*-plugins-expand/.../rabbitmqadmin /usr/bin/rabbitmqadmin   
 
-#添加执行权限
-chmod +x /usr/bin/rabbitmqadmin
-</code></pre></li>
-<li><p>使用rabbitmqadmin<br>查看exchanges</p>
-<pre><code> rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V daxiang list exchanges
-</code></pre><p>查看队列</p>
-<pre><code>rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V daxiang list queues
-</code></pre><p>新增队列</p>
-<pre><code>rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V daxiang declare queue name=settlement_biz_queue durable=true
-</code></pre><p>查看队列中的消息</p>
-<pre><code>rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V prod get queue=eis_queue requeue=true  count=106
-</code></pre><p>发布消息</p>
-<pre><code>rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V prod publish exchange=ak.topic routing_key=spd_biz properties=&#39;{&quot;headers&quot;:{&quot;msgType&quot;:&quot;新增企业产品&quot;},&quot;content_type&quot;:&quot;text/plain&quot;}&#39; payload=&#39;{&quot;edsGoodsId&quot;:&quot;ff8080815e409cfe015e50c52924001d&quot;,&quot;userId&quot;:&quot;ff8080815d54b5c4015d54d5acf80061&quot;}&#39;
-</code></pre><p>清除队列消息</p>
-<pre><code>rabbitmqadmin --host=120.77.2.93 -u rabbitmq_admin -p &#39;passwd&#39; -V ittest purge queue name=batch_task
-</code></pre><p>新增binding</p>
-<pre><code>rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V daxiang declare binding source=&quot;ak.topic&quot; destination_type=&quot;queue&quot; destination=&quot;settlement_biz_queue&quot; routing_key=&quot;spd_biz&quot;
-</code></pre><p>删除binding</p>
-<pre><code> rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V prod delete binding source=&quot;amq.topic&quot; destination_type=&quot;queue&quot; destination=&quot;batch_task&quot; properties_key=&quot;create_batch_task&quot;
-</code></pre></li>
-</ol>
-<ol>
-<li><p>使用示例</p>
-<pre><code>#!/bin/bash
-#该脚本用于初始化新用户的RabbitMq相关环境
+   #添加执行权限
+   chmod +x /usr/bin/rabbitmqadmin
+</code></pre><a id="more"></a>
+<h3 id="使用rabbitmqadmin"><a href="#使用rabbitmqadmin" class="headerlink" title="使用rabbitmqadmin"></a>使用rabbitmqadmin</h3><p>   查看exchanges</p>
+<pre><code>​```
+rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V daxiang list exchanges
+​```
+</code></pre><p>   查看队列</p>
+<pre><code>   rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V daxiang list queues
+</code></pre><p>   新增队列</p>
+<pre><code>   rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V daxiang declare queue name=settlement_biz_queue durable=true
+</code></pre><p>   查看队列中的消息</p>
+<pre><code>   rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V prod get queue=eis_queue requeue=true  count=106
+</code></pre><p>   发布消息</p>
+<pre><code>   rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V prod publish exchange=ak.topic routing_key=spd_biz properties=&#39;{&quot;headers&quot;:{&quot;msgType&quot;:&quot;新增企业产品&quot;},&quot;content_type&quot;:&quot;text/plain&quot;}&#39; payload=&#39;{&quot;edsGoodsId&quot;:&quot;ff8080815e409cfe015e50c52924001d&quot;,&quot;userId&quot;:&quot;ff8080815d54b5c4015d54d5acf80061&quot;}&#39;
+</code></pre><p>   清除队列消息</p>
+<pre><code>   rabbitmqadmin --host=120.77.2.93 -u rabbitmq_admin -p &#39;passwd&#39; -V ittest purge queue name=batch_task
+</code></pre><p>   新增binding</p>
+<pre><code>   rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V daxiang declare binding source=&quot;ak.topic&quot; destination_type=&quot;queue&quot; destination=&quot;settlement_biz_queue&quot; routing_key=&quot;spd_biz&quot;
+</code></pre><p>   删除binding</p>
+<pre><code>​```
+rabbitmqadmin -u rabbitmq_admin -p &#39;passwd&#39; -V prod delete binding source=&quot;amq.topic&quot; destination_type=&quot;queue&quot; destination=&quot;batch_task&quot; properties_key=&quot;create_batch_task&quot;
+​```
+</code></pre><h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><pre><code>   #!/bin/bash
+   #该脚本用于初始化新用户的RabbitMq相关环境
 
-#参数1是新用户对应的vHost名称
-vHost=$1
+   #参数1是新用户对应的vHost名称
+   vHost=$1
 
-#RabbitMq管理员用户名和密码
-adminName=admin
-password=&#39;123456&#39;
-topicName=&#39;ak.topic&#39;
+   #RabbitMq管理员用户名和密码
+   adminName=admin
+   password=&#39;123456&#39;
+   topicName=&#39;ak.topic&#39;
 
-echo &quot;初始化[${vHost}]数据&quot;
+   echo &quot;初始化[${vHost}]数据&quot;
 
-#删除vHost
-rabbitmqadmin -u $adminName -p $password delete vhost name=${vHost}
+   #删除vHost
+   rabbitmqadmin -u $adminName -p $password delete vhost name=${vHost}
 
-#创建vHost
-rabbitmqadmin -u $adminName -p $password declare vhost name=${vHost}
+   #创建vHost
+   rabbitmqadmin -u $adminName -p $password declare vhost name=${vHost}
 
-#赋予权限
-rabbitmqadmin -u $adminName -p $password declare permission vhost=${vHost} user=$adminName configure=&quot;.*&quot; write=&quot;.*&quot; read=&quot;.*&quot;
+   #赋予权限
+   rabbitmqadmin -u $adminName -p $password declare permission vhost=${vHost} user=$adminName configure=&quot;.*&quot; write=&quot;.*&quot; read=&quot;.*&quot;
 
-#创建Exchanges
-rabbitmqadmin -u $adminName -p $password  -V $vHost declare exchange name=$topicName type=topic
+   #创建Exchanges
+   rabbitmqadmin -u $adminName -p $password  -V $vHost declare exchange name=$topicName type=topic
 
-#创建queue
-rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=batch_task durable=true
-rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=eis_queue durable=true
-rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=settlement_biz_queue durable=true
-rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=spd_biz_queue durable=true
+   #创建queue
+   rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=batch_task durable=true
+   rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=eis_queue durable=true
+   rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=settlement_biz_queue durable=true
+   rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=spd_biz_queue durable=true
 
-#创建队列绑定关系
-rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;batch_task&quot; routing_key=&quot;create_batch_task&quot;
-rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;eis_queue&quot; routing_key=&quot;sync_task&quot;
-rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;settlement_biz_queue&quot; routing_key=&quot;spd_biz&quot;
-rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;spd_biz_queue&quot; routing_key=&quot;spd_biz&quot;
+   #创建队列绑定关系
+   rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;batch_task&quot; routing_key=&quot;create_batch_task&quot;
+   rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;eis_queue&quot; routing_key=&quot;sync_task&quot;
+   rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;settlement_biz_queue&quot; routing_key=&quot;spd_biz&quot;
+   rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;spd_biz_queue&quot; routing_key=&quot;spd_biz&quot;
 
-echo &quot;初始化[${vHost}]数据-完成&quot;
+   echo &quot;初始化[${vHost}]数据-完成&quot;
 
-#显示vhosts
-echo &quot;------------------------vhosts-------------------------------&quot;
-rabbitmqadmin -u $adminName -p $password -V $vHost list vhosts
+   #显示vhosts
+   echo &quot;------------------------vhosts-------------------------------&quot;
+   rabbitmqadmin -u $adminName -p $password -V $vHost list vhosts
 
-#显示exchanges
-echo &quot;------------------------exchanges-------------------------------&quot;
-rabbitmqadmin -u $adminName -p $password -V $vHost list exchanges
+   #显示exchanges
+   echo &quot;------------------------exchanges-------------------------------&quot;
+   rabbitmqadmin -u $adminName -p $password -V $vHost list exchanges
 
-#显示queues
-echo &quot;-------------------------queues---------------------------------&quot;
-rabbitmqadmin -u $adminName -p $password -V $vHost list queues
+   #显示queues
+   echo &quot;-------------------------queues---------------------------------&quot;
+   rabbitmqadmin -u $adminName -p $password -V $vHost list queues
 
-#显示bindings
-echo &quot;--------------------------bindings------------------------------&quot;
-rabbitmqadmin -u $adminName -p $password -V $vHost list bindings
-</code></pre><p>​</p>
-</li>
-</ol>
+   #显示bindings
+   echo &quot;--------------------------bindings------------------------------&quot;
+   rabbitmqadmin -u $adminName -p $password -V $vHost list bindings
+</code></pre><p>   ​</p>
 
       
     </div>
@@ -612,7 +607,7 @@ rabbitmqadmin -u $adminName -p $password -V $vHost list bindings
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#rabbitmqadmin使用"><span class="nav-number">1.</span> <span class="nav-text">rabbitmqadmin使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#rabbitmqadmin使用"><span class="nav-number">1.</span> <span class="nav-text">rabbitmqadmin使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置rabbitmqadmin"><span class="nav-number">1.1.</span> <span class="nav-text">配置rabbitmqadmin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用rabbitmqadmin"><span class="nav-number">1.2.</span> <span class="nav-text">使用rabbitmqadmin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用示例"><span class="nav-number">1.3.</span> <span class="nav-text">使用示例</span></a></li></ol></li></ol></div>
             
 
           </div>
