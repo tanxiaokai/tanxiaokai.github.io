@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="证书,OpenSSL," />
+  <meta name="keywords" content="Java,Spring,IOC," />
 
 
 
@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="创建自签名证书的步骤第1步：生成私钥openssl genrsa -des3 -out server.key 2048  说明：生成rsa私钥，des3算法，2048位强度，server.key是秘钥文件名。注意：生成私钥，需要提供一个至少4位的密码 第2步：生成CSR（证书签名请求）openssl req -new -key server.key -out server.csr 说明：需要依次输">
-<meta name="keywords" content="证书,OpenSSL">
+<meta name="description" content="这两天接手一个新项目的代码，需要对整个项目的Spring框架从3.2.1 升级到4.2.9。因为涉及底层改动比较大，需要对整个服务进行全面的测试。我想做一个测试功能，把服务所有能请求的url，对两个不同版本的输出进行比对来验证升级是否没有问题。在反射MVC的所有Mapping的请求时，发现只能反射方法中的参数类型，而不能获取参数的名称。在网上查了些资料终于找到了解决的方法。">
+<meta name="keywords" content="Java,Spring,IOC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenSSL 生成自签名证书">
-<meta property="og:url" content="http://yoursite.com/开发/Java/OpenSSL-生成自签名证书/index.html">
+<meta property="og:title" content="如何返回方法的参数名称">
+<meta property="og:url" content="http://yoursite.com/Java/Spring/IOC/如何返回方法的参数名称/index.html">
 <meta property="og:site_name" content="谭小凯学习笔记">
-<meta property="og:description" content="创建自签名证书的步骤第1步：生成私钥openssl genrsa -des3 -out server.key 2048  说明：生成rsa私钥，des3算法，2048位强度，server.key是秘钥文件名。注意：生成私钥，需要提供一个至少4位的密码 第2步：生成CSR（证书签名请求）openssl req -new -key server.key -out server.csr 说明：需要依次输">
+<meta property="og:description" content="这两天接手一个新项目的代码，需要对整个项目的Spring框架从3.2.1 升级到4.2.9。因为涉及底层改动比较大，需要对整个服务进行全面的测试。我想做一个测试功能，把服务所有能请求的url，对两个不同版本的输出进行比对来验证升级是否没有问题。在反射MVC的所有Mapping的请求时，发现只能反射方法中的参数类型，而不能获取参数的名称。在网上查了些资料终于找到了解决的方法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-15T06:08:11.291Z">
+<meta property="og:updated_time" content="2018-03-16T03:45:10.537Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenSSL 生成自签名证书">
-<meta name="twitter:description" content="创建自签名证书的步骤第1步：生成私钥openssl genrsa -des3 -out server.key 2048  说明：生成rsa私钥，des3算法，2048位强度，server.key是秘钥文件名。注意：生成私钥，需要提供一个至少4位的密码 第2步：生成CSR（证书签名请求）openssl req -new -key server.key -out server.csr 说明：需要依次输">
+<meta name="twitter:title" content="如何返回方法的参数名称">
+<meta name="twitter:description" content="这两天接手一个新项目的代码，需要对整个项目的Spring框架从3.2.1 升级到4.2.9。因为涉及底层改动比较大，需要对整个服务进行全面的测试。我想做一个测试功能，把服务所有能请求的url，对两个不同版本的输出进行比对来验证升级是否没有问题。在反射MVC的所有Mapping的请求时，发现只能反射方法中的参数类型，而不能获取参数的名称。在网上查了些资料终于找到了解决的方法。">
 
 
 
@@ -123,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/开发/Java/OpenSSL-生成自签名证书/"/>
+  <link rel="canonical" href="http://yoursite.com/Java/Spring/IOC/如何返回方法的参数名称/"/>
 
 
 
 
 
-  <title> OpenSSL 生成自签名证书 | 谭小凯学习笔记 </title>
+  <title> 如何返回方法的参数名称 | 谭小凯学习笔记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +252,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Java/OpenSSL-生成自签名证书/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java/Spring/IOC/如何返回方法的参数名称/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="谭小凯">
@@ -276,7 +276,7 @@
             
             
               
-                OpenSSL 生成自签名证书
+                如何返回方法的参数名称
               
             
           </h1>
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-27T10:23:55+08:00">
-                2016-12-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-28T17:30:04+08:00">
+                2016-12-28
               </time>
             
 
@@ -314,8 +314,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/" itemprop="url" rel="index">
-                    <span itemprop="name">开发</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -325,8 +325,19 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/Java/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/Spring/IOC/" itemprop="url" rel="index">
+                    <span itemprop="name">IOC</span>
                   </a>
                 </span>
 
@@ -360,36 +371,79 @@
       
 
       
-        <h2 id="创建自签名证书的步骤"><a href="#创建自签名证书的步骤" class="headerlink" title="创建自签名证书的步骤"></a>创建自签名证书的步骤</h2><h3 id="第1步：生成私钥"><a href="#第1步：生成私钥" class="headerlink" title="第1步：生成私钥"></a>第1步：生成私钥</h3><pre><code>openssl genrsa -des3 -out server.key 2048
-
-</code></pre><p>说明：生成rsa私钥，des3算法，2048位强度，server.key是秘钥文件名。<br>注意：生成私钥，需要提供一个至少4位的密码</p>
-<h3 id="第2步：生成CSR（证书签名请求）"><a href="#第2步：生成CSR（证书签名请求）" class="headerlink" title="第2步：生成CSR（证书签名请求）"></a>第2步：生成CSR（证书签名请求）</h3><pre><code>openssl req -new -key server.key -out server.csr
-</code></pre><p>说明：需要依次输入国家，地区，城市，组织，组织单位，Common Name和Email。其中Common Name，可以写自己的名字或者域名，如果要支持https，Common Name应该与域名保持一致，否则会引起浏览器警告。<br>示例：</p>
-<pre><code>Country Name (2 letter code) [AU]:CN  
-State or Province Name (full name) [Some-State]:Hubei  
-Locality Name (eg, city) []:Wuhan
-Organization Name (eg, company) [Internet Widgits Pty Ltd]:xxx
-Organizational Unit Name (eg, section) []:info technology
-Common Name (e.g. server FQDN or YOUR name) []:192.168.1.114
-Email Address []:
-</code></pre><h3 id="第3步：删除私钥中的密码"><a href="#第3步：删除私钥中的密码" class="headerlink" title="第3步：删除私钥中的密码"></a>第3步：删除私钥中的密码</h3><pre><code>cp server.key server.key.org
-openssl rsa -in server.key.org -out server.key
-</code></pre><h3 id="第4步：生成自签名证书"><a href="#第4步：生成自签名证书" class="headerlink" title="第4步：生成自签名证书"></a>第4步：生成自签名证书</h3><pre><code>$ openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt
-</code></pre><p>如果你不想花钱让CA签名，或者只是测试SSL的具体实现。那么，现在便可以着手生成一个自签名的证书了。<br>需要注意的是，在使用自签名的临时证书时，浏览器会提示证书的颁发机构是未知的。crt上有证书持有人的信息，持有人的公钥，以及签署者的签名等信息。当用户安装了证书之后，便意味着信任了这份证书，同时拥有了其中的公钥。证书上会说明用途，例如服务器认证，客户端认证，或者签署其他证书。当系统收到一份新的证书的时候，证书会说明，是由谁签署的。如果这个签署者确实可以签署其他证书，并且收到证书上的签名和签署者的公钥可以对上的时候，系统就自动信任新的证书。</p>
+        <p>这两天接手一个新项目的代码，需要对整个项目的Spring框架从3.2.1 升级到4.2.9。因为涉及底层改动比较大，需要对整个服务进行全面的测试。我想做一个测试功能，把服务所有能请求的url，对两个不同版本的输出进行比对来验证升级是否没有问题。在反射MVC的所有Mapping的请求时，发现只能反射方法中的参数类型，而不能获取参数的名称。在网上查了些资料终于找到了解决的方法。</p>
 <a id="more"></a>
-<h2 id="数字证书（Certificate）"><a href="#数字证书（Certificate）" class="headerlink" title="数字证书（Certificate）"></a>数字证书（Certificate）</h2><p>所谓数字证书，是一种用于电脑的身份识别机制。由数字证书颁发机构（CA）对使用私钥创建的签名请求文件做的签名（盖章），表示CA结构对证书持有者的认可。数字证书拥有以下几个优点：</p>
-<ul>
-<li>使用数字证书能够提高用户的可信度</li>
-<li>数字证书中的公钥，能够与服务端的私钥配对使用，实现数据传输过程中的加密和解密</li>
-<li>在证认使用者身份期间，使用者的敏感个人数据并不会被传输至证书持有者的网络系统上</li>
-<li><p>X.509证书包含三个文件：key，csr，crt。</p>
-</li>
-<li><p>key是服务器上的私钥文件，用于对发送给客户端数据的加密，以及对从客户端接收到数据的解密</p>
-</li>
-<li>csr是证书签名请求文件，用于提交给证书颁发机构（CA）对证书签名</li>
-<li>crt是由证书颁发机构（CA）签名后的证书，或者是开发者自签名的证书，包含证书持有人的信息，持有人的公钥，以及签署者的签名等信息</li>
-</ul>
-<p>备注：在密码学中，X.509是一个标准，规范了公开秘钥认证、证书吊销列表、授权凭证、凭证路径验证算法等。</p>
+<h3 id="获取SpringMvc所有注册的请求信息"><a href="#获取SpringMvc所有注册的请求信息" class="headerlink" title="获取SpringMvc所有注册的请求信息"></a>获取SpringMvc所有注册的请求信息</h3><pre><code>//核心包
+
+import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+
+//关键代码
+{
+    Map&lt;RequestMappingInfo, HandlerMethod&gt; handlerMethods = requestMappingHandlerMapping.getHandlerMethods();
+    Set&lt;RequestMappingInfo&gt; keySet = handlerMethods.keySet();
+
+    for (RequestMappingInfo requestMappingInfo : keySet) {
+            // 请求路径
+            String path = requestMappingInfo.getPatternsCondition().toString();
+
+            // 请求方法
+            String requestMethod = requestMappingInfo.getMethodsCondition().toString();
+
+            // 返回header类型
+            String responseType = requestMappingInfo.getProducesCondition().toString();
+
+            // 获取参数名称
+            HandlerMethod method = handlerMethods.get(requestMappingInfo);
+            List&lt;String&gt; parameters = parseParamNames(method.getBeanType(), method.getMethod().getName());
+    }
+}
+
+</code></pre><h3 id="解析方法的参数名称"><a href="#解析方法的参数名称" class="headerlink" title="解析方法的参数名称"></a>解析方法的参数名称</h3><pre><code>//需要依赖工具类 
+&lt;dependency&gt;
+    &lt;groupId&gt;javassist&lt;/groupId&gt;
+    &lt;artifactId&gt;javassist&lt;/artifactId&gt;
+    &lt;version&gt;3.4.GA&lt;/version&gt;
+&lt;/dependency&gt;
+
+//关键代码
+private List&lt;String&gt; parseParamNames(Class clazz, String methodName ){
+        List&lt;String&gt; returnList = new ArrayList();
+        try { 
+            //官方鼓励使用这种方法
+            ClassPool pool = ClassPool.getDefault();
+            ClassClassPath classPath = new ClassClassPath(clazz);
+            pool.insertClassPath(classPath);
+
+            //使用绝对路径方式
+            //ClassPool pool = ClassPool.getDefault();
+            //pool.insertClassPath(&quot;/path/xxxxxxxxxxx.jar&quot;);
+
+            CtClass cc = pool.get(clazz.getName());  
+            CtMethod cm = cc.getDeclaredMethod(methodName);  
+
+            //使用javaassist的反射方法获取方法的参数名  
+            MethodInfo methodInfo = cm.getMethodInfo();  
+            CodeAttribute codeAttribute = methodInfo.getCodeAttribute();  
+            LocalVariableAttribute attr = (LocalVariableAttribute) codeAttribute.getAttribute(LocalVariableAttribute.tag);  
+            if (attr == null) {
+                return returnList;
+            }  
+            String[] paramNames = new String[cm.getParameterTypes().length];  
+            int pos = Modifier.isStatic(cm.getModifiers()) ? 0 : 1;  
+            for (int i = 0; i &lt; paramNames.length; i++)  {
+                paramNames[i] = attr.variableName(i + pos);
+            }
+            for (int i = 0; i &lt; paramNames.length; i++) {  
+                returnList.add(paramNames[i]);  
+            }
+        }  catch(Exception e){
+            e.printStackTrace();
+        }
+        return returnList;
+}
+</code></pre><p>在做这个解析的时候遇到了javassist.NotFoundException 异常，主要原因是我使用的jar包的方式运行，classpath没有找到。按照我代码中的两种方式可以解决这种问题。</p>
 
       
     </div>
@@ -413,9 +467,11 @@ openssl rsa -in server.key.org -out server.key
       
         <div class="post-tags">
           
-            <a href="/tags/证书/" rel="tag"># 证书</a>
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
-            <a href="/tags/OpenSSL/" rel="tag"># OpenSSL</a>
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+            <a href="/tags/IOC/" rel="tag"># IOC</a>
           
         </div>
       
@@ -424,8 +480,8 @@ openssl rsa -in server.key.org -out server.key
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/开发/Redis/Redis-cli命令总结/" rel="next" title="Redis-cli命令总结">
-                <i class="fa fa-chevron-left"></i> Redis-cli命令总结
+              <a href="/Nginx/Nginx配置说明/" rel="next" title="Nginx配置说明">
+                <i class="fa fa-chevron-left"></i> Nginx配置说明
               </a>
             
           </div>
@@ -434,8 +490,8 @@ openssl rsa -in server.key.org -out server.key
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/维护/Nginx/Nginx配置说明/" rel="prev" title="Nginx配置说明">
-                Nginx配置说明 <i class="fa fa-chevron-right"></i>
+              <a href="/Java/Spring/Des加密/对Spring-MVC输出的JSON加密/" rel="prev" title="对Spring MVC输出的JSON加密">
+                对Spring MVC输出的JSON加密 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -515,7 +571,7 @@ openssl rsa -in server.key.org -out server.key
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -559,7 +615,7 @@ openssl rsa -in server.key.org -out server.key
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建自签名证书的步骤"><span class="nav-number">1.</span> <span class="nav-text">创建自签名证书的步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1步：生成私钥"><span class="nav-number">1.1.</span> <span class="nav-text">第1步：生成私钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2步：生成CSR（证书签名请求）"><span class="nav-number">1.2.</span> <span class="nav-text">第2步：生成CSR（证书签名请求）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3步：删除私钥中的密码"><span class="nav-number">1.3.</span> <span class="nav-text">第3步：删除私钥中的密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4步：生成自签名证书"><span class="nav-number">1.4.</span> <span class="nav-text">第4步：生成自签名证书</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字证书（Certificate）"><span class="nav-number">2.</span> <span class="nav-text">数字证书（Certificate）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取SpringMvc所有注册的请求信息"><span class="nav-number">1.</span> <span class="nav-text">获取SpringMvc所有注册的请求信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析方法的参数名称"><span class="nav-number">2.</span> <span class="nav-text">解析方法的参数名称</span></a></li></ol></div>
             
 
           </div>
