@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Git,GitService," />
+  <meta name="keywords" content="RabbitMq," />
 
 
 
@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="​    GitLab 是一个用于仓库管理系统的开源项目。使用Git作为代码管理工具，并在此基础上搭建起来的web服务。可通过Web界面进行访问公开的或者私人项目。它拥有与Github类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序(Wall)进行交流。它还提供一个代码片段收集功能可以轻松实现代">
-<meta name="keywords" content="Git,GitService">
+<meta name="description" content="一、下载及安装首先去官网下载最新版本：[http://www.rabbitmq.com/download.html] 需要在CentOS上安装，所以下载对应的RPM包。安装过程就非常方便了，先安装一个erlang，直接在rabbitmq官网上下载到合适的RPM包，[http://www.rabbitmq.com/releases/erlang/] rpm -ihv erlang-18.3.4.4-">
+<meta name="keywords" content="RabbitMq">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GitLab安装维护笔记">
-<meta property="og:url" content="http://yoursite.com/开发/Git/GitLab安装笔记/index.html">
+<meta property="og:title" content="Rabbitmq使用">
+<meta property="og:url" content="http://yoursite.com/开发/Java/RabbitMq/rabbitmq使用/index.html">
 <meta property="og:site_name" content="谭小凯学习笔记">
-<meta property="og:description" content="​    GitLab 是一个用于仓库管理系统的开源项目。使用Git作为代码管理工具，并在此基础上搭建起来的web服务。可通过Web界面进行访问公开的或者私人项目。它拥有与Github类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序(Wall)进行交流。它还提供一个代码片段收集功能可以轻松实现代">
+<meta property="og:description" content="一、下载及安装首先去官网下载最新版本：[http://www.rabbitmq.com/download.html] 需要在CentOS上安装，所以下载对应的RPM包。安装过程就非常方便了，先安装一个erlang，直接在rabbitmq官网上下载到合适的RPM包，[http://www.rabbitmq.com/releases/erlang/] rpm -ihv erlang-18.3.4.4-">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-15T09:31:07.221Z">
+<meta property="og:updated_time" content="2018-03-16T03:18:09.124Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GitLab安装维护笔记">
-<meta name="twitter:description" content="​    GitLab 是一个用于仓库管理系统的开源项目。使用Git作为代码管理工具，并在此基础上搭建起来的web服务。可通过Web界面进行访问公开的或者私人项目。它拥有与Github类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序(Wall)进行交流。它还提供一个代码片段收集功能可以轻松实现代">
+<meta name="twitter:title" content="Rabbitmq使用">
+<meta name="twitter:description" content="一、下载及安装首先去官网下载最新版本：[http://www.rabbitmq.com/download.html] 需要在CentOS上安装，所以下载对应的RPM包。安装过程就非常方便了，先安装一个erlang，直接在rabbitmq官网上下载到合适的RPM包，[http://www.rabbitmq.com/releases/erlang/] rpm -ihv erlang-18.3.4.4-">
 
 
 
@@ -123,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/开发/Git/GitLab安装笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/开发/Java/RabbitMq/rabbitmq使用/"/>
 
 
 
 
 
-  <title> GitLab安装维护笔记 | 谭小凯学习笔记 </title>
+  <title> Rabbitmq使用 | 谭小凯学习笔记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +252,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Git/GitLab安装笔记/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Java/RabbitMq/rabbitmq使用/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="谭小凯">
@@ -276,7 +276,7 @@
             
             
               
-                GitLab安装维护笔记
+                Rabbitmq使用
               
             
           </h1>
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-13T19:01:48+08:00">
-                2018-01-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-24T10:01:06+08:00">
+                2017-02-24
               </time>
             
 
@@ -325,8 +325,19 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
+                  <a href="/categories/开发/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发/Java/RabbitMq/" itemprop="url" rel="index">
+                    <span itemprop="name">RabbitMq</span>
                   </a>
                 </span>
 
@@ -360,133 +371,138 @@
       
 
       
-        <p>​    GitLab 是一个用于仓库管理系统的开源项目。使用<a href="http://baike.baidu.com/view/1531489.htm" target="_blank" rel="noopener">Git</a>作为代码管理工具，并在此基础上搭建起来的web服务。可通过Web界面进行访问公开的或者私人项目。它拥有与Github类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序(Wall)进行交流。它还提供一个代码片段收集功能可以轻松实现代码复用。</p>
-<h2 id="一、参考文档"><a href="#一、参考文档" class="headerlink" title="一、参考文档"></a>一、参考文档</h2><ul>
-<li><a href="https://www.gitlab.com.cn/installation/#centos-7" target="_blank" rel="noopener">https://www.gitlab.com.cn/installation/#centos-7</a></li>
-<li><a href="https://www.cnblogs.com/straycats/p/7637373.html" target="_blank" rel="noopener">https://www.cnblogs.com/straycats/p/7637373.html</a></li>
-<li><a href="https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/</a></li>
-<li><a href="http://blog.csdn.net/wujiangwei567/article/details/53690646" target="_blank" rel="noopener">http://blog.csdn.net/wujiangwei567/article/details/53690646</a></li>
-</ul>
-<h2 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h2><ul>
-<li><p>前期准备</p>
-<pre><code>#使用国内镜像：
-#新建 vi /etc/yum.repos.d/gitlab-ce.repo，内容为：
+        <h2 id="一、下载及安装"><a href="#一、下载及安装" class="headerlink" title="一、下载及安装"></a>一、下载及安装</h2><p>首先去官网下载最新版本：[<a href="http://www.rabbitmq.com/download.html]" target="_blank" rel="noopener">http://www.rabbitmq.com/download.html]</a></p>
+<p>需要在CentOS上安装，所以下载对应的RPM包。安装过程就非常方便了，先安装一个erlang，直接在rabbitmq官网上下载到合适的RPM包，[<a href="http://www.rabbitmq.com/releases/erlang/]" target="_blank" rel="noopener">http://www.rabbitmq.com/releases/erlang/]</a></p>
+<pre><code>rpm -ihv erlang-18.3.4.4-1.el7.centos.x86_64.rpm
+rpm -ihv rabbitmq-server-3.6.6-1.el7.noarch.rpm
+</code></pre><p>遇到以下错误，需要安装socat</p>
+<pre><code>警告：rabbitmq-server-3.6.6-1.el7.noarch.rpm: 头V4 RSA/SHA1 Signature, 密钥 ID 6026dfca: NOKEY
+错误：依赖检测失败：
+    socat 被 rabbitmq-server-3.6.6-1.el7.noarch 需要
 
-[gitlab-ce]  
-name=gitlab-ce  
-baseurl=http://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7  
-repo_gpgcheck=0  
-gpgcheck=0  
-enabled=1  
-gpgkey=https://packages.gitlab.com/gpg.key  
-
-sudo yum makecache
+</code></pre><p>安装方法</p>
+<pre><code>wget ftp://ftp.is.co.za/mirror/fedora.redhat.com/epel/6/x86_64/socat-1.7.2.3-1.el6.x86_64.rpm
+rpm -ihv socat-1.7.2.3-1.el6.x86_64.rpm
+</code></pre><a id="more"></a>
+<h2 id="二、服务启动关闭"><a href="#二、服务启动关闭" class="headerlink" title="二、服务启动关闭"></a>二、服务启动关闭</h2><p>CentOS7 启动</p>
+<pre><code>systemctl start rabbitmq-server 
+systemctl enable rabbitmq-server #开机启动
+</code></pre><p>CentOS6 启动</p>
+<pre><code>/etc/init.d/rabbitmq-server start    
+或    
+service rabbitmq-service start   
+</code></pre><h2 id="三、启用Web后台"><a href="#三、启用Web后台" class="headerlink" title="三、启用Web后台"></a>三、启用Web后台</h2><ol>
+<li><p>创建用户</p>
+<pre><code> rabbitmqctl add_user admin admin123
 </code></pre></li>
-<li><p>安装</p>
-<pre><code>#安装ssh服务，设置防火墙
-sudo yum install -y curl policycoreutils-python openssh-server
-sudo systemctl enable sshd
-sudo systemctl start sshd
-sudo firewall-cmd --permanent --add-service=http
-sudo systemctl reload firewalld
-
-#邮件服务
-sudo yum install postfix -y
-sudo systemctl enable postfix
-sudo systemctl start postfix
-
-#安装gitlab
-curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
-sudo yum install gitlab-ce -y 
+<li><p>查看用户</p>
+<pre><code> rabbitmqctl list_users
 </code></pre></li>
-<li><p>汉化</p>
-<pre><code>mkdir /opt/tmp
-cd /opt/tmp
-
-#下载最新的汉化包
-#git clone https://gitlab.com/xhang/gitlab.git
-#指定版本下载,如下载10.5.4，可以运行下面的语句
-git clone https://gitlab.com/xhang/gitlab.git -b v10.5.4-zh
-
-#查看该汉化补丁的版本
-cat gitlab/VERSION
-
-#比较汉化标签和原标签，导出 patch 用的 diff 文件
-cd /opt/tmp/gitlab/
-git diff v10.5.4 v10.5.4-zh &gt; ../10.5.4-zh.diff
-
-#将补丁更新到gitlab中
-cd /opt/tmp
-yum install patch -y 
-patch -d /opt/gitlab/embedded/service/gitlab-rails -p1 &lt; 10.5.4-zh.diff
-
-cd /opt
-rm -rf /opt/tmp
+<li><p>设置用户组</p>
+<pre><code> rabbitmqctl set_user_tags admin administrator
 </code></pre></li>
-</ul>
-<h2 id="三、配置"><a href="#三、配置" class="headerlink" title="三、配置"></a>三、配置</h2><ul>
-<li><p>配置gitlab</p>
-<pre><code>vi /etc/gitlab/gitlab.rb
-
-修改:
-external_url &#39;http://120.77.2.93:7000&#39;
-
-unicorn[&#39;listen&#39;] = &#39;127.0.0.1&#39;
-unicorn[&#39;port&#39;] = 3000
-
-#主目录
-git_data_dirs({
-   &quot;default&quot; =&gt; {
-     &quot;path&quot; =&gt; &quot;/home/git/gitlab-repositories&quot;
-    }
- })
-
-#邮件服务器设置 
-gitlab_rails[&#39;smtp_enable&#39;] = true
-gitlab_rails[&#39;smtp_address&#39;] = &quot;smtp.exmail.qq.com&quot;
-gitlab_rails[&#39;smtp_port&#39;] = 465
-gitlab_rails[&#39;smtp_user_name&#39;] = &quot;dev@1ycloud.net&quot;
-gitlab_rails[&#39;smtp_password&#39;] = &quot;aokA1234&quot;
-#gitlab_rails[&#39;smtp_domain&#39;] = &quot;exmail.qq.com&quot;
-gitlab_rails[&#39;smtp_authentication&#39;] = &quot;login&quot;
-gitlab_rails[&#39;smtp_enable_starttls_auto&#39;] = true
-gitlab_rails[&#39;smtp_tls&#39;] = true
-gitlab_rails[&#39;gitlab_email_from&#39;] = &#39;dev@1ycloud.net&#39;
-
-user[&#39;git_user_name&#39;] = &quot;GitLab&quot;
-user[&#39;git_user_email&#39;] = &quot;dev@1ycloud.net&quot;
+<li><p>开启Web管理插件</p>
+<pre><code> rabbitmq-plugins enable rabbitmq_management
 </code></pre></li>
-<li><p>启动/维护</p>
-<pre><code> sudo gitlab-ctl reconfigure  #重新加载配置, 每次重新配置，都需要执行
- sodu gitlab-ctl stop     #停止
- sodu gitlab-ctl start    #启动
-
- 查看日志:
- tail -f /var/log/gitlab/gitlab-rails/production.log
-
- 切换git注目录
- vi /etc/passwd   #找git用户，有两个1个是老的git服务，一个是gitlab服务，开启需要的即可
-
- #发送邮件测试
- gitlab-rails console     
- Notify.test_email(&#39;tank@1ycloud.net&#39;, &#39;Message Subject&#39;, &#39;Message Body&#39;).deliver_now
+<li><p>查看端口</p>
+<pre><code> netstat -lnutp
 </code></pre></li>
-</ul>
-<h2 id="四、导入项目"><a href="#四、导入项目" class="headerlink" title="四、导入项目"></a>四、导入项目</h2><pre><code>#创建导入目录 
-#sudo -u git mkdir /var/opt/gitlab/git-data/repository-import-&lt;群组名&gt;/群组名
-#示例
-sudo -u git mkdir /home/git/gitlab-repositories/repository-import-other
-sudo -u git mkdir /home/git/gitlab-repositories/repository-import-other/other
+<li>访问后台 [<a href="http://192.168.1.114:15672]" target="_blank" rel="noopener">http://192.168.1.114:15672]</a></li>
+</ol>
+<h2 id="四、配置"><a href="#四、配置" class="headerlink" title="四、配置"></a>四、配置</h2><ol>
+<li><p>配置文件</p>
+<p> Rabbitmq的配置文件有三个，位于/etc/rabbitmq/，<br> 这三个文件分别是：</p>
+<p> （1）enabled_plugins, 设置允许的插件列表，该配置文档的格式为erlang的列表格式如<br> [rabbitmq_management,rabbitmq_visualiser].<br> （2）rabbitmq.conf  设置rabbitmq的运行参数。如果是用rpm包安装，可从默认docs目录复制配置文件样例</p>
+<pre><code> cp /usr/share/doc/rabbitmq-server-3.6.6/rabbitmq.config.example /etc/rabbitmq.config
+</code></pre><p> 常用配置如下:</p>
+<pre><code> tcp_listerners    #设置rabbimq的监听端口，默认为[5672]。
+ disk_free_limit   #磁盘低水位线，若磁盘容量低于指定值则停止接收数据，默认值为{mem_relative, 1.0},即与内存相关联1：1，也可定制为多少byte.
+ vm_memory_high_watermark  #设置内存低水位线，若低于该水位线，则开启流控机制，默认值是0.4，即内存总量的40%。
+ hipe_compile     #将部分rabbimq代码用High Performance Erlang compiler编译，可提升性能，该参数是实验性，若出现erlang vm segfaults，应关掉。
+ force_fine_statistics    #该参数属于rabbimq_management，若为true则进行精细化的统计，但会影响性能。
+ frame_max     #包大小，若包小则低延迟，若包则高吞吐，默认是131072=128K。
+ heartbeat     #客户端与服务端心跳间隔，设置为0则关闭心跳，默认是600秒。
+</code></pre><p> （3）rabbitmq-env.conf  rabbitmq的环境参数配置 </p>
+<pre><code> RABBITMQ_NODE_IP_ADDRESS= //IP地址，空串bind所有地址，指定地址bind指定网络接口
+ RABBITMQ_NODE_PORT=       //TCP端口号，默认是5672
+ RABBITMQ_NODENAME=        //节点名称。默认是rabbit
+ RABBITMQ_CONFIG_FILE= //配置文件路径 ，即rabbitmq.config文件路径
+ RABBITMQ_MNESIA_BASE=     //mnesia所在路径
+ RABBITMQ_LOG_BASE=        //日志所在路径
+ RABBITMQ_PLUGINS_DIR=     //插件所在路径
+</code></pre></li>
+</ol>
+<p>RabbitMQ的四种ExChange<br>[<a href="http://blog.csdn.net/dandanzmc/article/details/52262850]" target="_blank" rel="noopener">http://blog.csdn.net/dandanzmc/article/details/52262850]</a></p>
+<h2 id="五、rabbitmqadmin使用"><a href="#五、rabbitmqadmin使用" class="headerlink" title="五、rabbitmqadmin使用"></a>五、rabbitmqadmin使用</h2><ol>
+<li><p>配置rabbitmqadmin</p>
+<pre><code>#查找位置
+find /var/lib/rabbitmq/ -name &quot;rabbitmqadmin&quot;
 
-#拷贝原来Git版本库
-cp -rf /home/git/repositories/bm_radio.git /home/git/gitlab-repositories/repository-import-other/other/
+#复制，路径更加查找的结果来
+cp -a /var/lib/rabbitmq/rabbit@*-plugins-expand/.../rabbitmqadmin /usr/bin/rabbitmqadmin   
 
-#修改权限
-chown -R git:git  /home/git/gitlab-repositories/repository-import-other
+#添加执行权限
+chmod +x /usr/bin/rabbitmqadmin
+</code></pre><p>​</p>
+</li>
+<li><p>使用示例</p>
+<pre><code>#!/bin/bash
+#该脚本用于初始化新用户的RabbitMq相关环境
 
-#导入代码
-gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-import-other&#39;]
-</code></pre><p>​    </p>
+#参数1是新用户对应的vHost名称
+vHost=$1
+
+#RabbitMq管理员用户名和密码
+adminName=admin
+password=&#39;123456&#39;
+topicName=&#39;ak.topic&#39;
+
+echo &quot;初始化[${vHost}]数据&quot;
+
+#删除vHost
+rabbitmqadmin -u $adminName -p $password delete vhost name=${vHost}
+
+#创建vHost
+rabbitmqadmin -u $adminName -p $password declare vhost name=${vHost}
+
+#赋予权限
+rabbitmqadmin -u $adminName -p $password declare permission vhost=${vHost} user=$adminName configure=&quot;.*&quot; write=&quot;.*&quot; read=&quot;.*&quot;
+
+#创建Exchanges
+rabbitmqadmin -u $adminName -p $password  -V $vHost declare exchange name=$topicName type=topic
+
+#创建queue
+rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=batch_task durable=true
+rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=eis_queue durable=true
+rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=settlement_biz_queue durable=true
+rabbitmqadmin -u $adminName -p $password -V $vHost declare queue name=spd_biz_queue durable=true
+
+#创建队列绑定关系
+rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;batch_task&quot; routing_key=&quot;create_batch_task&quot;
+rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;eis_queue&quot; routing_key=&quot;sync_task&quot;
+rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;settlement_biz_queue&quot; routing_key=&quot;spd_biz&quot;
+rabbitmqadmin -u $adminName -p $password -V $vHost declare binding source=$topicName destination_type=&quot;queue&quot; destination=&quot;spd_biz_queue&quot; routing_key=&quot;spd_biz&quot;
+
+echo &quot;初始化[${vHost}]数据-完成&quot;
+
+#显示vhosts
+echo &quot;------------------------vhosts-------------------------------&quot;
+rabbitmqadmin -u $adminName -p $password -V $vHost list vhosts
+
+#显示exchanges
+echo &quot;------------------------exchanges-------------------------------&quot;
+rabbitmqadmin -u $adminName -p $password -V $vHost list exchanges
+
+#显示queues
+echo &quot;-------------------------queues---------------------------------&quot;
+rabbitmqadmin -u $adminName -p $password -V $vHost list queues
+
+#显示bindings
+echo &quot;--------------------------bindings------------------------------&quot;
+rabbitmqadmin -u $adminName -p $password -V $vHost list bindings
+</code></pre><p>​</p>
+</li>
+</ol>
 
       
     </div>
@@ -510,9 +526,7 @@ gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-im
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" rel="tag"># Git</a>
-          
-            <a href="/tags/GitService/" rel="tag"># GitService</a>
+            <a href="/tags/RabbitMq/" rel="tag"># RabbitMq</a>
           
         </div>
       
@@ -521,8 +535,8 @@ gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-im
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/开发/Java/RabbitMq/rabbitmq使用/" rel="next" title="Rabbitmq使用">
-                <i class="fa fa-chevron-left"></i> Rabbitmq使用
+              <a href="/维护/Git/Git-SSH-Key-生成步骤/" rel="next" title="Git SSH Key 生成步骤">
+                <i class="fa fa-chevron-left"></i> Git SSH Key 生成步骤
               </a>
             
           </div>
@@ -531,8 +545,8 @@ gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-im
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/开发/Git/Gogs安装笔记/" rel="prev" title="Gogs安装笔记">
-                Gogs安装笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/开发/Git/GitLab安装笔记/" rel="prev" title="GitLab安装维护笔记">
+                GitLab安装维护笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -656,7 +670,7 @@ gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-im
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、参考文档"><span class="nav-number">1.</span> <span class="nav-text">一、参考文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、安装"><span class="nav-number">2.</span> <span class="nav-text">二、安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、配置"><span class="nav-number">3.</span> <span class="nav-text">三、配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、导入项目"><span class="nav-number">4.</span> <span class="nav-text">四、导入项目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、下载及安装"><span class="nav-number">1.</span> <span class="nav-text">一、下载及安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、服务启动关闭"><span class="nav-number">2.</span> <span class="nav-text">二、服务启动关闭</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、启用Web后台"><span class="nav-number">3.</span> <span class="nav-text">三、启用Web后台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、配置"><span class="nav-number">4.</span> <span class="nav-text">四、配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、rabbitmqadmin使用"><span class="nav-number">5.</span> <span class="nav-text">五、rabbitmqadmin使用</span></a></li></ol></div>
             
 
           </div>

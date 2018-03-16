@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="​    Gogs是一款类似Github的开源文件／代码管理系统（基于Git）。它比GitLab小巧很多，占用的系统资源也少。比较适合个人、或者小团队搭建。不过感觉这个项目还比较新，还有一些小的问题。我在Centos 7安装时，遇到了些小麻烦。 一、下载安装包 官网文档  创建git用户 adduser git      二进制包 下载  su git cd /home/git wget http">
+<meta name="description" content="​    Gogs是一款类似Github的开源文件／代码管理系统（基于Git）。它比GitLab小巧很多，占用的系统资源也少。比较适合个人、或者小团队搭建。不过感觉这个项目还比较新，还有一些小的问题。我在Centos 7安装时，遇到了些小麻烦。">
 <meta name="keywords" content="Git,GitService">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gogs安装笔记">
 <meta property="og:url" content="http://yoursite.com/开发/Git/Gogs安装笔记/index.html">
 <meta property="og:site_name" content="谭小凯学习笔记">
-<meta property="og:description" content="​    Gogs是一款类似Github的开源文件／代码管理系统（基于Git）。它比GitLab小巧很多，占用的系统资源也少。比较适合个人、或者小团队搭建。不过感觉这个项目还比较新，还有一些小的问题。我在Centos 7安装时，遇到了些小麻烦。 一、下载安装包 官网文档  创建git用户 adduser git      二进制包 下载  su git cd /home/git wget http">
+<meta property="og:description" content="​    Gogs是一款类似Github的开源文件／代码管理系统（基于Git）。它比GitLab小巧很多，占用的系统资源也少。比较适合个人、或者小团队搭建。不过感觉这个项目还比较新，还有一些小的问题。我在Centos 7安装时，遇到了些小麻烦。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-15T09:25:07.036Z">
+<meta property="og:updated_time" content="2018-03-16T03:18:09.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gogs安装笔记">
-<meta name="twitter:description" content="​    Gogs是一款类似Github的开源文件／代码管理系统（基于Git）。它比GitLab小巧很多，占用的系统资源也少。比较适合个人、或者小团队搭建。不过感觉这个项目还比较新，还有一些小的问题。我在Centos 7安装时，遇到了些小麻烦。 一、下载安装包 官网文档  创建git用户 adduser git      二进制包 下载  su git cd /home/git wget http">
+<meta name="twitter:description" content="​    Gogs是一款类似Github的开源文件／代码管理系统（基于Git）。它比GitLab小巧很多，占用的系统资源也少。比较适合个人、或者小团队搭建。不过感觉这个项目还比较新，还有一些小的问题。我在Centos 7安装时，遇到了些小麻烦。">
 
 
 
@@ -361,6 +361,7 @@
 
       
         <p>​    Gogs是一款类似Github的开源文件／代码管理系统（基于Git）。它比GitLab小巧很多，占用的系统资源也少。比较适合个人、或者小团队搭建。不过感觉这个项目还比较新，还有一些小的问题。我在Centos 7安装时，遇到了些小麻烦。</p>
+<a id="more"></a>
 <h2 id="一、下载安装包"><a href="#一、下载安装包" class="headerlink" title="一、下载安装包"></a>一、下载安装包</h2><ul>
 <li><p><a href="https://gogs.io/docs/installation" target="_blank" rel="noopener">官网文档</a></p>
 </li>
@@ -450,7 +451,17 @@ supervisorctl reload
   git init --bare
 </code></pre></li>
 </ul>
-<p>   ​</p>
+<h2 id="四、配置"><a href="#四、配置" class="headerlink" title="四、配置"></a>四、配置</h2><ul>
+<li><p>修改配置</p>
+<p>可参考 <a href="https://gogs.io/docs/advanced/configuration_cheat_sheet" target="_blank" rel="noopener">https://gogs.io/docs/advanced/configuration_cheat_sheet</a></p>
+<pre><code>vi /home/git/gogs/custom/conf/app.ini
+
+#关闭用户注册
+DISABLE_REGISTRATION = true
+SHOW_REGISTRATION_BUTTON = false
+</code></pre><p>​</p>
+</li>
+</ul>
 
       
     </div>
@@ -572,7 +583,7 @@ supervisorctl reload
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -581,7 +592,7 @@ supervisorctl reload
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -616,7 +627,7 @@ supervisorctl reload
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、下载安装包"><span class="nav-number">1.</span> <span class="nav-text">一、下载安装包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、启动、配置服务"><span class="nav-number">2.</span> <span class="nav-text">二、启动、配置服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、-导入已有git仓库"><span class="nav-number">3.</span> <span class="nav-text">三、 导入已有git仓库</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、下载安装包"><span class="nav-number">1.</span> <span class="nav-text">一、下载安装包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、启动、配置服务"><span class="nav-number">2.</span> <span class="nav-text">二、启动、配置服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、-导入已有git仓库"><span class="nav-number">3.</span> <span class="nav-text">三、 导入已有git仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、配置"><span class="nav-number">4.</span> <span class="nav-text">四、配置</span></a></li></ol></div>
             
 
           </div>

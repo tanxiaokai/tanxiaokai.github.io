@@ -361,100 +361,14 @@
 
       
         
-          
-            <p>​    Gogs是一款类似Github的开源文件／代码管理系统（基于Git）。它比GitLab小巧很多，占用的系统资源也少。比较适合个人、或者小团队搭建。不过感觉这个项目还比较新，还有一些小的问题。我在Centos 7安装时，遇到了些小麻烦。</p>
-<h2 id="一、下载安装包"><a href="#一、下载安装包" class="headerlink" title="一、下载安装包"></a>一、下载安装包</h2><ul>
-<li><p><a href="https://gogs.io/docs/installation" target="_blank" rel="noopener">官网文档</a></p>
-</li>
-<li><p>创建git用户</p>
-<pre><code>adduser git    
-</code></pre></li>
-<li><p><a href="https://gogs.io/docs/installation/install_from_binary.html" target="_blank" rel="noopener">二进制包</a> 下载 </p>
-<pre><code>su git
-cd /home/git
-wget https://dl.gogs.io/0.11.34/raspi2_armv6.zip  --树莓派
-wget https://dl.gogs.io/0.11.34/linux_amd64.zip   --linux 64
-</code></pre></li>
-<li><p>解压缩安装包</p>
-<pre><code>unzip raspi2_armv6.zip    --树莓派
-unzip linux_amd64.zip     --linux 64
-</code></pre></li>
-</ul>
-<h2 id="二、启动、配置服务"><a href="#二、启动、配置服务" class="headerlink" title="二、启动、配置服务"></a>二、启动、配置服务</h2><ul>
-<li><p>直接启动</p>
-<pre><code>./gogs web
-</code></pre></li>
-<li><p>首次使用需要进行配置</p>
-<p>访问Web：<a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a></p>
-<ol>
-<li><p>执行Mysql脚本创建数据库</p>
-<pre><code>SET GLOBAL innodb_file_per_table = ON,
-        innodb_file_format = Barracuda,
-        innodb_large_prefix = ON;
-DROP DATABASE IF EXISTS gogs;
-CREATE DATABASE IF NOT EXISTS gogs CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-GRANT ALL PRIVILEGES ON gogs.* TO &#39;gogs&#39;@&#39;%&#39; IDENTIFIED BY &#39;aoka20!*&#39; WITH GRANT OPTION;
-</code></pre></li>
-<li><p>创建git仓库主目录</p>
-<pre><code>mkdir /home/git/gogs-repositories
-</code></pre></li>
-<li><p>在页面填写对应内容</p>
-</li>
-<li><p>在点击安装后，可能会出现以下错误，需要不停的执行修复表的sql，执行后在点立即安装，直到所有的sql语句都执行成功为止：</p>
-<pre><code>数据库设置不正确：Error 1709: Index column size too large. The maximum column size is 767 bytes.
-</code></pre><p>修复表sql</p>
-<pre><code>use gogs;
-alter table user ROW_FORMAT=DYNAMIC;
-alter table repository ROW_FORMAT=DYNAMIC;
-alter table login_source ROW_FORMAT=DYNAMIC;
-alter table protect_branch ROW_FORMAT=DYNAMIC;
-alter table protect_branch_whitelist ROW_FORMAT=DYNAMIC;
-alter table email_address ROW_FORMAT=DYNAMIC;
-</code></pre></li>
-</ol>
-</li>
-<li><p>使用supervisor启动</p>
-<p>添加配置文件</p>
-<pre><code> vi /etc/supervisor/conf.d/gogs.conf
-</code></pre><p>添加以下内容</p>
-<pre><code>[program:gogs]
-directory=/home/git/gogs/         
-command=/home/git/gogs/gogs web 
-autostart=true
-autorestart=true
-startsecs=10
-stdout_logfile=/var/log/gogs/stdout.log
-stdout_logfile_maxbytes=1MB
-stdout_logfile_backups=10
-stdout_capture_maxbytes=1MB
-stderr_logfile=/var/log/gogs/stderr.log
-stderr_logfile_maxbytes=1MB
-stderr_logfile_backups=10
-stderr_capture_maxbytes=1MB
-user = git
-environment = HOME=&quot;/home/git&quot;, USER=&quot;git&quot;
-</code></pre><p>更新配置</p>
-<pre><code>supervisorctl update
-supervisorctl reload
-</code></pre></li>
-</ul>
-<h2 id="三、-导入已有git仓库"><a href="#三、-导入已有git仓库" class="headerlink" title="三、 导入已有git仓库"></a>三、 导入已有git仓库</h2><ul>
-<li><p>在gogs里面新建要导入的git仓库。注意一定需要同名。例如：导入yard_service</p>
-<pre><code># 在SPD组织下，新建 yard_service 仓库。
-# 切换 git 用户
-  su git
-# 删除创建的目录
-  rm -rf /home/git/gogs-repositories/spd/yard_service.git
-# 拷贝原始git仓库
-  cp -rf /home/git/repositories/yard_service.git  /home/git/gogs-repositories/spd/
-# 重新初始化git
-  cd  /home/git/gogs-repositories/spd/yard_service.git
-  git init --bare
-</code></pre></li>
-</ul>
-<p>   ​</p>
-
-          
+          <p>​    Gogs是一款类似Github的开源文件／代码管理系统（基于Git）。它比GitLab小巧很多，占用的系统资源也少。比较适合个人、或者小团队搭建。不过感觉这个项目还比较新，还有一些小的问题。我在Centos 7安装时，遇到了些小麻烦。</p>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/开发/Git/Gogs安装笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -769,7 +683,7 @@ gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-im
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Java/rabbitmq使用/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/开发/Java/RabbitMq/rabbitmq使用/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="谭小凯">
@@ -794,7 +708,7 @@ gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-im
             
               
                 
-                <a class="post-title-link" href="/开发/Java/rabbitmq使用/" itemprop="url">
+                <a class="post-title-link" href="/开发/Java/RabbitMq/rabbitmq使用/" itemprop="url">
                   Rabbitmq使用
                 </a>
               
@@ -852,6 +766,17 @@ gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-im
 
                 
                 
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发/Java/RabbitMq/" itemprop="url" rel="index">
+                    <span itemprop="name">RabbitMq</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -881,8 +806,7 @@ gitlab-rake gitlab:import:repos[&#39;/home/git/gitlab-repositories/repository-im
 
       
         
-          
-            <h2 id="一、下载及安装"><a href="#一、下载及安装" class="headerlink" title="一、下载及安装"></a>一、下载及安装</h2><p>首先去官网下载最新版本：[<a href="http://www.rabbitmq.com/download.html]" target="_blank" rel="noopener">http://www.rabbitmq.com/download.html]</a></p>
+          <h2 id="一、下载及安装"><a href="#一、下载及安装" class="headerlink" title="一、下载及安装"></a>一、下载及安装</h2><p>首先去官网下载最新版本：[<a href="http://www.rabbitmq.com/download.html]" target="_blank" rel="noopener">http://www.rabbitmq.com/download.html]</a></p>
 <p>需要在CentOS上安装，所以下载对应的RPM包。安装过程就非常方便了，先安装一个erlang，直接在rabbitmq官网上下载到合适的RPM包，[<a href="http://www.rabbitmq.com/releases/erlang/]" target="_blank" rel="noopener">http://www.rabbitmq.com/releases/erlang/]</a></p>
 <pre><code>rpm -ihv erlang-18.3.4.4-1.el7.centos.x86_64.rpm
 rpm -ihv rabbitmq-server-3.6.6-1.el7.noarch.rpm
@@ -894,56 +818,14 @@ rpm -ihv rabbitmq-server-3.6.6-1.el7.noarch.rpm
 </code></pre><p>安装方法</p>
 <pre><code>wget ftp://ftp.is.co.za/mirror/fedora.redhat.com/epel/6/x86_64/socat-1.7.2.3-1.el6.x86_64.rpm
 rpm -ihv socat-1.7.2.3-1.el6.x86_64.rpm
-</code></pre><h2 id="二、服务启动关闭"><a href="#二、服务启动关闭" class="headerlink" title="二、服务启动关闭"></a>二、服务启动关闭</h2><p>CentOS7 启动</p>
-<pre><code>systemctl start rabbitmq-server 
-</code></pre><p>CentOS6 启动</p>
-<pre><code>/etc/init.d/rabbitmq-server start    
-或    
-service rabbitmq-service start   
-</code></pre><h2 id="三、启用Web后台"><a href="#三、启用Web后台" class="headerlink" title="三、启用Web后台"></a>三、启用Web后台</h2><ol>
-<li><p>创建用户</p>
-<pre><code> rabbitmqctl add_user admin admin123
-</code></pre></li>
-<li><p>查看用户</p>
-<pre><code> rabbitmqctl list_users
-</code></pre></li>
-<li><p>设置用户组</p>
-<pre><code> rabbitmqctl set_user_tags admin administrator
-</code></pre></li>
-<li><p>开启Web管理插件</p>
-<pre><code> rabbitmq-plugins enable rabbitmq_management
-</code></pre></li>
-<li><p>查看端口</p>
-<pre><code> netstat -lnutp
-</code></pre></li>
-<li>访问后台 [<a href="http://192.168.1.114:15672]" target="_blank" rel="noopener">http://192.168.1.114:15672]</a></li>
-</ol>
-<h2 id="四、配置"><a href="#四、配置" class="headerlink" title="四、配置"></a>四、配置</h2><ol>
-<li><p>配置文件</p>
-<p> Rabbitmq的配置文件有三个，位于/etc/rabbitmq/，<br> 这三个文件分别是：</p>
-<p> （1）enabled_plugins, 设置允许的插件列表，该配置文档的格式为erlang的列表格式如<br> [rabbitmq_management,rabbitmq_visualiser].<br> （2）rabbitmq.conf  设置rabbitmq的运行参数。如果是用rpm包安装，可从默认docs目录复制配置文件样例</p>
-<pre><code> cp /usr/share/doc/rabbitmq-server-3.6.6/rabbitmq.config.example /etc/rabbitmq.config
-</code></pre><p> 常用配置如下:</p>
-<pre><code> tcp_listerners    #设置rabbimq的监听端口，默认为[5672]。
- disk_free_limit   #磁盘低水位线，若磁盘容量低于指定值则停止接收数据，默认值为{mem_relative, 1.0},即与内存相关联1：1，也可定制为多少byte.
- vm_memory_high_watermark  #设置内存低水位线，若低于该水位线，则开启流控机制，默认值是0.4，即内存总量的40%。
- hipe_compile     #将部分rabbimq代码用High Performance Erlang compiler编译，可提升性能，该参数是实验性，若出现erlang vm segfaults，应关掉。
- force_fine_statistics    #该参数属于rabbimq_management，若为true则进行精细化的统计，但会影响性能。
- frame_max     #包大小，若包小则低延迟，若包则高吞吐，默认是131072=128K。
- heartbeat     #客户端与服务端心跳间隔，设置为0则关闭心跳，默认是600秒。
-</code></pre><p> （3）rabbitmq-env.conf  rabbitmq的环境参数配置 </p>
-<pre><code> RABBITMQ_NODE_IP_ADDRESS= //IP地址，空串bind所有地址，指定地址bind指定网络接口
- RABBITMQ_NODE_PORT=       //TCP端口号，默认是5672
- RABBITMQ_NODENAME=        //节点名称。默认是rabbit
- RABBITMQ_CONFIG_FILE= //配置文件路径 ，即rabbitmq.config文件路径
- RABBITMQ_MNESIA_BASE=     //mnesia所在路径
- RABBITMQ_LOG_BASE=        //日志所在路径
- RABBITMQ_PLUGINS_DIR=     //插件所在路径
-</code></pre></li>
-</ol>
-<p>RabbitMQ的四种ExChange<br>[<a href="http://blog.csdn.net/dandanzmc/article/details/52262850]" target="_blank" rel="noopener">http://blog.csdn.net/dandanzmc/article/details/52262850]</a></p>
-<h2 id="五、Java示例"><a href="#五、Java示例" class="headerlink" title="五、Java示例"></a>五、Java示例</h2>
-          
+</code></pre>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/开发/Java/RabbitMq/rabbitmq使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2133,7 +2015,7 @@ http://127.0.0.1:8888
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2142,7 +2024,7 @@ http://127.0.0.1:8888
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
