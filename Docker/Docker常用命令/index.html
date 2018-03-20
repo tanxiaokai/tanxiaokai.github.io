@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="谭小凯学习笔记">
 <meta property="og:description" content="Docker常用命令容器生命周期管理 — docker [run|start|stop|restart|kill|rm|pause|unpause]容器操作运维 — docker [ps|inspect|top|attach|events|logs|wait|export|port]容器rootfs命令 — docker [commit|cp|diff]镜像仓库 — docker [login|p">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-16T07:44:06.340Z">
+<meta property="og:updated_time" content="2018-03-20T06:46:10.641Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker常用命令">
 <meta name="twitter:description" content="Docker常用命令容器生命周期管理 — docker [run|start|stop|restart|kill|rm|pause|unpause]容器操作运维 — docker [ps|inspect|top|attach|events|logs|wait|export|port]容器rootfs命令 — docker [commit|cp|diff]镜像仓库 — docker [login|p">
@@ -464,15 +464,15 @@ docker commit -m &quot;add jdk&quot; -a &quot;tank&quot; d316f2bd1357 spd_docker
 docker build -t spd_docker:0.1 ./
 
 docker build -f ./Dockerfile-centos7 -t spd_docker:0.2 ./
-</code></pre><h3 id="上传镜像到私服"><a href="#上传镜像到私服" class="headerlink" title="上传镜像到私服"></a>上传镜像到私服</h3><pre><code>1.首先登陆私服(admin aoka2017)
-docker login 120.77.2.93:12345
+</code></pre><h3 id="上传镜像到私服"><a href="#上传镜像到私服" class="headerlink" title="上传镜像到私服"></a>上传镜像到私服</h3><pre><code>1.首先登陆私服
+docker login 192.168.1.1:12345
 2.输入nexus的账号和密码
 3.设置tag
-docker tag spd_docker:0.1 120.77.2.93:12345/spd_docker:0.1
+docker tag spd_docker:0.1 192.168.1.1:12345/test_docker:0.1
 4.push镜像
-docker push 120.77.2.93:12345/spd_docker:0.1
+docker push 192.168.1.1:12345/test_docker:0.1
 5.下载镜像
-docker pull 120.77.2.93:12345/spd_docker:0.1
+docker pull 192.168.1.1:12345/test_docker:0.1
 
 ###中间有些问题，因为私服不支持https请求，需要修改配置文件, 修改完后重启docker服务
 ###Mac下路径
@@ -481,7 +481,7 @@ vi /etc/docker/daemon.json (linux)
 ###添加代码  
 {
   &quot;insecure-registries&quot; : [
-    &quot;120.77.2.93:12345&quot;
+    &quot;192.168.1.1:12345&quot;
   ]
 }
 </code></pre><h3 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h3><pre><code>docker rmi 
